@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betterlyfe — Curated Best Websites</title>
 
-    <!-- Phosphor Icons (fixed CDN) -->
-    <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css">
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/css/icons.css">
 
     <!-- Google Fonts: Newsreader -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
             --white: #ffffff;
             --font-heading: 'Newsreader', 'Times New Roman', Georgia, serif;
             --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --green: #2e7d32;
+            --green-glow: #00e676;
         }
 
         *,
@@ -70,34 +70,33 @@
             margin: 0 auto;
             padding: 0 1.5rem;
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: space-between;
+            gap: 0.5rem;
         }
 
         .navbar-brand {
-            font-family: var(--font-heading);
-            font-size: 1.35rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            color: var(--text);
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
             text-decoration: none;
+            line-height: 1.2;
         }
 
-        .navbar-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
+        .navbar-main {
+            font-family: var(--font-body);
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .navbar-by {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-style: italic;
             color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .navbar-whatsapp:hover {
-            color: #25D366;
-        }
-        .navbar-whatsapp i {
-            font-size: 1.2rem;
-            color: #25D366;
+            font-weight: 400;
         }
 
         /* ========== MAIN CONTENT ========== */
@@ -163,7 +162,6 @@
             opacity: 0.65;
         }
 
-        /* Ikon arrow up right sebagai pengganti bullet */
         .accordion-header i {
             font-size: 1.1rem;
             color: var(--text-secondary);
@@ -176,7 +174,6 @@
             color: var(--text);
         }
 
-        /* Konten accordion */
         .accordion-content-wrapper {
             display: grid;
             grid-template-rows: 0fr;
@@ -220,12 +217,12 @@
             max-width: 90%;
         }
 
-        /* Tombol Visit */
+        /* Tombol Visit tanpa ikon Phosphor, cukup teks + panah teks */
         .accordion-visit {
             align-self: flex-end;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 0.02em;
@@ -238,17 +235,10 @@
             background: transparent;
             cursor: pointer;
         }
-        .accordion-visit i {
-            font-size: 1rem;
-            transition: transform 0.25s ease;
-        }
         .accordion-visit:hover {
             background-color: var(--text);
             color: var(--white);
             border-color: var(--text);
-        }
-        .accordion-visit:hover i {
-            transform: translate(2px, -2px);
         }
 
         /* ========== FOOTER ========== */
@@ -267,20 +257,24 @@
         .footer-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: nowrap; /* tetap sejajar */
+            justify-content: center;
+            /* semua ikon di tengah */
         }
 
         .footer-row + .footer-row {
             margin-top: 0.9rem;
             padding-top: 0.9rem;
             border-top: 1px solid var(--border-light);
+            justify-content: space-between;
+            /* status kiri, copyright kanan */
         }
 
         .footer-icons {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            justify-content: center;
+            gap: 1.4rem;
+            flex-wrap: wrap;
         }
 
         .footer-icons a {
@@ -288,7 +282,11 @@
             transition: color 0.2s ease;
             display: inline-flex;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
+            text-decoration: none;
+            /* pastikan tidak ada garis bawah */
+            border: none;
+            outline: none;
         }
         .footer-icons a:hover {
             color: var(--text);
@@ -303,12 +301,13 @@
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background-color: var(--green);
+            background-color: var(--green-glow);
             display: inline-block;
             flex-shrink: 0;
+            box-shadow: 0 0 8px var(--green-glow), 0 0 14px rgba(0, 230, 118, 0.5);
         }
 
         .copyright {
@@ -334,10 +333,14 @@
             .footer-inner {
                 padding: 0 1rem;
             }
-            /* Pastikan footer tetap horizontal */
-            .footer-row {
+            .navbar-main {
+                font-size: 1.35rem;
+            }
+            .navbar-by {
+                font-size: 0.85rem;
+            }
+            .footer-row + .footer-row {
                 flex-direction: row;
-                flex-wrap: nowrap;
                 justify-content: space-between;
             }
             .status {
@@ -354,10 +357,9 @@
     <!-- NAVBAR STICKY -->
     <nav class="navbar">
         <div class="navbar-inner">
-            <a href="/" class="navbar-brand">Betterlyfe</a>
-            <a href="https://wa.me/6281234567890" class="navbar-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <i class="ph-whatsapp-logo"></i>
-                <span>WhatsApp</span>
+            <a href="/" class="navbar-brand">
+                <span class="navbar-main">betterwebs</span>
+                <span class="navbar-by">by betterlyfe</span>
             </a>
         </div>
     </nav>
@@ -370,11 +372,11 @@
 
         <div class="accordion" id="accordion">
 
-            <!-- Item 1 -->
+            <!-- Item 1: Betterlyfe -->
             <div class="accordion-item active" data-index="0">
                 <button class="accordion-header" aria-expanded="true">
                     <span>Betterlyfe</span>
-                    <i class="ph-arrow-up-right"></i>
+                    <i class="ph ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
@@ -384,18 +386,18 @@
                                 A mindful wellness hub pairing modern science with ancient rituals — breathwork, cold exposure, and grounded living.
                             </p>
                             <a href="https://betterlyfe.netlify.app" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph-arrow-up-right"></i>
+                                Visit →
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 2 -->
+            <!-- Item 2: Amonium -->
             <div class="accordion-item" data-index="1">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Amonium</span>
-                    <i class="ph-arrow-up-right"></i>
+                    <i class="ph ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
@@ -405,18 +407,18 @@
                                 A bold creative studio crafting visual identities, editorial design, and immersive digital experiences.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph-arrow-up-right"></i>
+                                Visit →
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 3 -->
+            <!-- Item 3: Aether -->
             <div class="accordion-item" data-index="2">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Aether</span>
-                    <i class="ph-arrow-up-right"></i>
+                    <i class="ph ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
@@ -426,18 +428,18 @@
                                 A living archive of timeless design resources — typefaces, color palettes, and templates.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph-arrow-up-right"></i>
+                                Visit →
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 4 -->
+            <!-- Item 4: Solace -->
             <div class="accordion-item" data-index="3">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Solace</span>
-                    <i class="ph-arrow-up-right"></i>
+                    <i class="ph ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
@@ -447,7 +449,7 @@
                                 A minimal toolkit for slow productivity — gentle timers, ambient soundscapes, and a frictionless writing space.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph-arrow-up-right"></i>
+                                Visit →
                             </a>
                         </div>
                     </div>
@@ -461,25 +463,25 @@
     <footer class="site-footer">
         <div class="footer-inner">
 
-            <!-- Row 1: Ikon saja -->
+            <!-- Row 1: Ikon social media & blog di tengah -->
             <div class="footer-row">
                 <div class="footer-icons">
                     <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                        <i class="ph-instagram-logo"></i>
+                        <i class="ph ph-instagram-logo"></i>
                     </a>
                     <a href="https://threads.net" target="_blank" rel="noopener" aria-label="Threads">
-                        <i class="ph-threads-logo"></i>
+                        <i class="ph ph-threads-logo"></i>
                     </a>
                     <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <i class="ph-whatsapp-logo"></i>
+                        <i class="ph ph-whatsapp-logo"></i>
                     </a>
                     <a href="https://betterlyfe.netlify.app" target="_blank" rel="noopener" aria-label="Blog">
-                        <i class="ph-globe"></i>
+                        <i class="ph ph-globe"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Row 2: Status + Copyright (selalu horizontal) -->
+            <!-- Row 2: Status + Copyright -->
             <div class="footer-row">
                 <div class="status">
                     <span class="status-dot"></span> All systems work
@@ -513,10 +515,8 @@
                 const clickedItem = header.closest('.accordion-item');
                 const isActive = clickedItem.classList.contains('active');
 
-                // Tutup semua
                 items.forEach(item => item.classList.remove('active'));
 
-                // Buka hanya jika sebelumnya tidak aktif
                 if (!isActive) {
                     clickedItem.classList.add('active');
                 }
@@ -524,7 +524,6 @@
                 updateAria();
             });
 
-            // Set tahun otomatis
             document.getElementById('footer-year').textContent = new Date().getFullYear();
         })();
     </script>
