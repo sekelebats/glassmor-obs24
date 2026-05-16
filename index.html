@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betterlyfe — Curated Best Websites</title>
 
-    <!-- Phosphor Icons -->
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/css/icons.css">
+    <!-- Phosphor Icons (fixed CDN) -->
+    <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css">
 
     <!-- Google Fonts: Newsreader -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +25,7 @@
             --white: #ffffff;
             --font-heading: 'Newsreader', 'Times New Roman', Georgia, serif;
             --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --green: #2e7d32;
         }
 
         *,
@@ -37,7 +38,6 @@
 
         html {
             font-size: 100%;
-            /* 1rem = 16px */
             scroll-behavior: smooth;
         }
 
@@ -63,7 +63,6 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
             padding: 1rem 0;
-            transition: background-color 0.3s ease;
         }
 
         .navbar-inner {
@@ -82,11 +81,6 @@
             letter-spacing: -0.01em;
             color: var(--text);
             text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .navbar-brand:hover {
-            opacity: 0.7;
         }
 
         .navbar-whatsapp {
@@ -97,20 +91,16 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s ease;
-            font-family: var(--font-body);
-            letter-spacing: -0.01em;
         }
-
         .navbar-whatsapp:hover {
-            color: var(--text);
+            color: #25D366;
         }
-
         .navbar-whatsapp i {
             font-size: 1.2rem;
             color: #25D366;
         }
 
-        /* ========== MAIN CONTENT WRAPPER ========== */
+        /* ========== MAIN CONTENT ========== */
         .main-wrapper {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -119,11 +109,9 @@
             flex: 1;
         }
 
-        /* ========== HEADER ========== */
         .page-header {
             padding-top: 3.5rem;
             padding-bottom: 2.5rem;
-            text-align: left;
         }
 
         .page-header h1 {
@@ -132,15 +120,12 @@
             font-weight: 400;
             letter-spacing: -0.02em;
             line-height: 1.2;
-            color: var(--text);
             margin-bottom: 0.4rem;
         }
 
         .page-header .subtitle {
-            font-family: var(--font-body);
             font-size: 0.9rem;
             color: var(--text-secondary);
-            letter-spacing: 0.01em;
         }
 
         /* ========== ACCORDION ========== */
@@ -152,12 +137,10 @@
         .accordion-item {
             border-top: 1px solid var(--border);
         }
-
         .accordion-item:last-child {
             border-bottom: 1px solid var(--border);
         }
 
-        /* Accordion Header (clickable title) */
         .accordion-header {
             display: flex;
             align-items: center;
@@ -173,38 +156,32 @@
             color: var(--text);
             letter-spacing: -0.01em;
             text-align: left;
-            transition: opacity 0.25s ease, padding-left 0.25s ease;
-            position: relative;
             gap: 1rem;
+            transition: opacity 0.25s ease;
         }
-
         .accordion-header:hover {
-            opacity: 0.6;
-            padding-left: 0.3rem;
+            opacity: 0.65;
         }
 
-        /* Subtle indicator dot */
-        .accordion-indicator {
+        /* Ikon arrow up right sebagai pengganti bullet */
+        .accordion-header i {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            transition: transform 0.35s ease, color 0.25s ease;
             flex-shrink: 0;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--border);
-            transition: background-color 0.35s ease, transform 0.35s ease;
         }
 
-        .accordion-item.active .accordion-indicator {
-            background-color: var(--accent);
-            transform: scale(1.3);
+        .accordion-item.active .accordion-header i {
+            transform: rotate(135deg);
+            color: var(--text);
         }
 
-        /* Accordion Content */
+        /* Konten accordion */
         .accordion-content-wrapper {
             display: grid;
             grid-template-rows: 0fr;
             transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
         .accordion-item.active .accordion-content-wrapper {
             grid-template-rows: 1fr;
         }
@@ -222,40 +199,33 @@
             transform: translateY(-8px);
             transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
         }
-
         .accordion-item.active .accordion-content-body {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Image inside accordion */
         .accordion-image {
             width: 100%;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 6px;
             border: 1px solid var(--border-light);
-            display: block;
             background-color: #f0ede8;
         }
 
-        /* Description */
         .accordion-description {
-            font-family: var(--font-body);
             font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.55;
-            letter-spacing: 0.01em;
             max-width: 90%;
         }
 
-        /* Visit button */
+        /* Tombol Visit */
         .accordion-visit {
             align-self: flex-end;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-family: var(--font-body);
             font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 0.02em;
@@ -268,20 +238,17 @@
             background: transparent;
             cursor: pointer;
         }
-
+        .accordion-visit i {
+            font-size: 1rem;
+            transition: transform 0.25s ease;
+        }
         .accordion-visit:hover {
             background-color: var(--text);
             color: var(--white);
             border-color: var(--text);
         }
-
-        .accordion-visit i {
-            font-size: 1rem;
-            transition: transform 0.25s ease;
-        }
-
         .accordion-visit:hover i {
-            transform: translateY(-2px);
+            transform: translate(2px, -2px);
         }
 
         /* ========== FOOTER ========== */
@@ -301,64 +268,53 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.8rem;
+            flex-wrap: nowrap; /* tetap sejajar */
         }
 
-        .footer-row+.footer-row {
+        .footer-row + .footer-row {
             margin-top: 0.9rem;
             padding-top: 0.9rem;
             border-top: 1px solid var(--border-light);
         }
 
-        .footer-left {
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.02em;
-            line-height: 1.4;
-        }
-
-        .footer-right {
+        .footer-icons {
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            flex-wrap: wrap;
         }
 
-        .footer-right a {
+        .footer-icons a {
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: color 0.2s ease;
-            white-space: nowrap;
+            font-size: 1.2rem;
         }
-
-        .footer-right a:hover {
+        .footer-icons a:hover {
             color: var(--text);
         }
 
-        .footer-right a i {
-            font-size: 1.05rem;
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
-        .footer-bottom-left {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: #999;
-            letter-spacing: 0.03em;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--green);
+            display: inline-block;
+            flex-shrink: 0;
         }
 
-        .footer-bottom-right {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
+        .copyright {
+            font-size: 0.8rem;
             color: #999;
-            letter-spacing: 0.02em;
+            white-space: nowrap;
         }
 
         /* ========== RESPONSIVE ========== */
@@ -366,163 +322,132 @@
             .page-header h1 {
                 font-size: 1.7rem;
             }
-
             .accordion-header {
                 font-size: 1.1rem;
                 padding: 1.2rem 0;
             }
-
             .accordion-description {
                 max-width: 100%;
             }
-
-            .footer-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .footer-right {
-                gap: 0.9rem;
-            }
-
-            .navbar-inner {
-                padding: 0 1rem;
-            }
-
-            .main-wrapper {
-                padding: 0 1rem;
-            }
-
+            .navbar-inner,
+            .main-wrapper,
             .footer-inner {
                 padding: 0 1rem;
+            }
+            /* Pastikan footer tetap horizontal */
+            .footer-row {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .status {
+                font-size: 0.75rem;
+            }
+            .copyright {
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== NAVBAR STICKY ==================== -->
+    <!-- NAVBAR STICKY -->
     <nav class="navbar">
         <div class="navbar-inner">
             <a href="/" class="navbar-brand">Betterlyfe</a>
-            <a href="https://wa.me/6281234567890" class="navbar-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
-                <i class="ph ph-whatsapp-logo"></i>
+            <a href="https://wa.me/6281234567890" class="navbar-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i class="ph-whatsapp-logo"></i>
                 <span>WhatsApp</span>
             </a>
         </div>
     </nav>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
     <main class="main-wrapper">
-
-        <!-- Header -->
         <header class="page-header">
             <h1>Curated Best Websites</h1>
             <p class="subtitle">A quiet collection of noteworthy corners on the internet.</p>
         </header>
 
-        <!-- Accordion -->
         <div class="accordion" id="accordion">
 
-            <!-- Item 1: Betterlyfe -->
+            <!-- Item 1 -->
             <div class="accordion-item active" data-index="0">
                 <button class="accordion-header" aria-expanded="true">
                     <span>Betterlyfe</span>
-                    <span class="accordion-indicator"></span>
+                    <i class="ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
                         <div class="accordion-content-body">
-                            <img
-                            class="accordion-image"
-                            src="https://picsum.photos/seed/betterlyfe/700/350"
-                            alt="Betterlyfe preview"
-                            loading="lazy"
-                            >
+                            <img class="accordion-image" src="https://picsum.photos/seed/betterlyfe/700/350" alt="Betterlyfe" loading="lazy">
                             <p class="accordion-description">
                                 A mindful wellness hub pairing modern science with ancient rituals — breathwork, cold exposure, and grounded living.
                             </p>
                             <a href="https://betterlyfe.netlify.app" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph ph-arrow-up"></i>
+                                Visit <i class="ph-arrow-up-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 2: Amonium -->
+            <!-- Item 2 -->
             <div class="accordion-item" data-index="1">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Amonium</span>
-                    <span class="accordion-indicator"></span>
+                    <i class="ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
                         <div class="accordion-content-body">
-                            <img
-                            class="accordion-image"
-                            src="https://picsum.photos/seed/amonium/700/350"
-                            alt="Amonium preview"
-                            loading="lazy"
-                            >
+                            <img class="accordion-image" src="https://picsum.photos/seed/amonium/700/350" alt="Amonium" loading="lazy">
                             <p class="accordion-description">
-                                A bold creative studio crafting visual identities, editorial design, and immersive digital experiences for culture-driven brands.
+                                A bold creative studio crafting visual identities, editorial design, and immersive digital experiences.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph ph-arrow-up"></i>
+                                Visit <i class="ph-arrow-up-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 3: Aether -->
+            <!-- Item 3 -->
             <div class="accordion-item" data-index="2">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Aether</span>
-                    <span class="accordion-indicator"></span>
+                    <i class="ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
                         <div class="accordion-content-body">
-                            <img
-                            class="accordion-image"
-                            src="https://picsum.photos/seed/aether/700/350"
-                            alt="Aether preview"
-                            loading="lazy"
-                            >
+                            <img class="accordion-image" src="https://picsum.photos/seed/aether/700/350" alt="Aether" loading="lazy">
                             <p class="accordion-description">
-                                A living archive of timeless design resources — typefaces, color palettes, and templates for the thoughtful creator.
+                                A living archive of timeless design resources — typefaces, color palettes, and templates.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph ph-arrow-up"></i>
+                                Visit <i class="ph-arrow-up-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 4: Solace -->
+            <!-- Item 4 -->
             <div class="accordion-item" data-index="3">
                 <button class="accordion-header" aria-expanded="false">
                     <span>Solace</span>
-                    <span class="accordion-indicator"></span>
+                    <i class="ph-arrow-up-right"></i>
                 </button>
                 <div class="accordion-content-wrapper">
                     <div class="accordion-content-inner">
                         <div class="accordion-content-body">
-                            <img
-                            class="accordion-image"
-                            src="https://picsum.photos/seed/solace/700/350"
-                            alt="Solace preview"
-                            loading="lazy"
-                            >
+                            <img class="accordion-image" src="https://picsum.photos/seed/solace/700/350" alt="Solace" loading="lazy">
                             <p class="accordion-description">
                                 A minimal toolkit for slow productivity — gentle timers, ambient soundscapes, and a frictionless writing space.
                             </p>
                             <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                Visit <i class="ph ph-arrow-up"></i>
+                                Visit <i class="ph-arrow-up-right"></i>
                             </a>
                         </div>
                     </div>
@@ -530,60 +455,57 @@
             </div>
 
         </div>
-        <!-- end .accordion -->
-
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
 
-            <!-- Row 1 -->
+            <!-- Row 1: Ikon saja -->
             <div class="footer-row">
-                <div class="footer-left">
-                    develop, produced and run by <strong>OBSRV/club</strong>
-                </div>
-                <div class="footer-right">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <i class="ph ph-instagram-logo"></i> Instagram
+                <div class="footer-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+                        <i class="ph-instagram-logo"></i>
                     </a>
-                    <a href="https://threads.net" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-                        <i class="ph ph-threads-logo"></i> Thread
+                    <a href="https://threads.net" target="_blank" rel="noopener" aria-label="Threads">
+                        <i class="ph-threads-logo"></i>
                     </a>
-                    <a href="mailto:hello@betterlyfe.netlify.app" aria-label="Email">
-                        <i class="ph ph-envelope"></i> Email
+                    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="ph-whatsapp-logo"></i>
                     </a>
-                    <a href="https://betterlyfe.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Website">
-                        <i class="ph ph-globe"></i> betterlyfe.netlify.app
+                    <a href="https://betterlyfe.netlify.app" target="_blank" rel="noopener" aria-label="Blog">
+                        <i class="ph-globe"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Row 2 -->
+            <!-- Row 2: Status + Copyright (selalu horizontal) -->
             <div class="footer-row">
-                <div class="footer-bottom-left">
-                    All systems work
+                <div class="status">
+                    <span class="status-dot"></span> All systems work
                 </div>
-                <div class="footer-bottom-right" id="footer-year">
-                    &copy; <span></span>
+                <div class="copyright">
+                    &copy; OBSRV/club | <span id="footer-year"></span>
                 </div>
             </div>
 
         </div>
     </footer>
 
-    <!-- ==================== ACCORDION SCRIPT ==================== -->
+    <!-- ACCORDION SCRIPT -->
     <script>
         (function() {
             const accordion = document.getElementById('accordion');
             const items = accordion.querySelectorAll('.accordion-item');
 
-            // Set initial active: only the first item (Betterlyfe) is open
-            // The "active" class is already in HTML for item 0.
-            // Set aria-expanded correctly on load.
-            updateAria();
+            function updateAria() {
+                items.forEach(item => {
+                    const header = item.querySelector('.accordion-header');
+                    const active = item.classList.contains('active');
+                    header.setAttribute('aria-expanded', active ? 'true' : 'false');
+                });
+            }
 
-            // Delegated click handler on the accordion
             accordion.addEventListener('click', function(e) {
                 const header = e.target.closest('.accordion-header');
                 if (!header) return;
@@ -591,12 +513,10 @@
                 const clickedItem = header.closest('.accordion-item');
                 const isActive = clickedItem.classList.contains('active');
 
-                // Close all items
-                items.forEach(item => {
-                    item.classList.remove('active');
-                });
+                // Tutup semua
+                items.forEach(item => item.classList.remove('active'));
 
-                // If the clicked item was NOT active, open it. If it WAS active, leave all closed.
+                // Buka hanya jika sebelumnya tidak aktif
                 if (!isActive) {
                     clickedItem.classList.add('active');
                 }
@@ -604,19 +524,8 @@
                 updateAria();
             });
 
-            function updateAria() {
-                items.forEach(item => {
-                    const header = item.querySelector('.accordion-header');
-                    const isActive = item.classList.contains('active');
-                    header.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-                });
-            }
-
-            // Dynamic year
-            const yearSpan = document.querySelector('#footer-year span');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
+            // Set tahun otomatis
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
         })();
     </script>
 
