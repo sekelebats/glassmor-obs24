@@ -97,25 +97,25 @@
         }
 
         /* ========== AT SIGN DI KANAN NAVBAR ========== */   
-        .at-link {
-            font-family: var(--font-body);
-            font-size: 2rem;
-            font-weight: 450;
-            letter-spacing: 0.01em;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.1rem;
-        }
+        .navbar-at {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
 
-        .at-link:hover {
-            color: var(--text);
-        }
-        .at-symbol {
-            font-size: inherit;
-        }
+.at-link {
+    font-family: var(--font-body);
+    font-size: 2rem;          /* ← BESAR, sesuai keinginan */
+    font-weight: 500;
+    line-height: 1;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.at-link:hover {
+    color: var(--text);
+}
 
         /* ========== MAIN CONTENT ========== */
         .main-wrapper {
