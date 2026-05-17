@@ -71,7 +71,7 @@
             padding: 0 1.5rem;
             display: flex;
             align-items: baseline;
-            justify-content: center;      /* 👈 tengah */
+            justify-content: center;
             gap: 0.4rem;
         }
 
@@ -86,7 +86,7 @@
         .navbar-main {
             font-family: var(--font-body);
             font-size: 1.6rem;
-            font-weight: 600;            /* 👈 lebih tebal */
+            font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--text);
         }
@@ -111,6 +111,16 @@
         .page-header {
             padding-top: 3.5rem;
             padding-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .header-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 8px;
         }
 
         .page-header h1 {
@@ -162,7 +172,6 @@
             opacity: 0.65;
         }
 
-        /* Container panah (Lucide) */
         .accordion-arrows {
             display: flex;
             align-items: center;
@@ -177,22 +186,21 @@
             color: var(--text);
         }
         .accordion-arrows .arrow-down,
-        .accordion-arrows .arrow-right {
+        .accordion-arrows .arrow-up {
             width: 100%;
             height: 100%;
             transition: transform 0.35s ease, opacity 0.35s ease;
         }
-        /* Default: panah bawah terlihat, kanan tersembunyi */
         .accordion-arrows .arrow-down {
             display: block;
         }
-        .accordion-arrows .arrow-right {
+        .accordion-arrows .arrow-up {
             display: none;
         }
         .accordion-item.active .accordion-arrows .arrow-down {
             display: none;
         }
-        .accordion-item.active .accordion-arrows .arrow-right {
+        .accordion-item.active .accordion-arrows .arrow-up {
             display: block;
         }
 
@@ -239,7 +247,6 @@
             max-width: 90%;
         }
 
-        /* Tombol VISIT tanpa ikon */
         .accordion-visit {
             align-self: flex-end;
             display: inline-flex;
@@ -285,7 +292,7 @@
         .footer-row + .footer-row {
             margin-top: 0.9rem;
             padding-top: 0.9rem;
-            border-top: 1px solid var(--border-light);
+            /* divider dihapus */
             justify-content: space-between;
         }
 
@@ -293,8 +300,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.4rem;
-            flex-wrap: wrap;
         }
 
         .footer-icons a {
@@ -302,10 +307,8 @@
             transition: color 0.2s ease;
             display: inline-flex;
             align-items: center;
-            font-size: 1.15rem;
+            font-size: 1.4rem;
             text-decoration: none;
-            border: none;
-            outline: none;
         }
         .footer-icons a:hover {
             color: var(--text);
@@ -368,12 +371,15 @@
             .copyright {
                 font-size: 0.75rem;
             }
+            .footer-icons a {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR STICKY (betterwebs di tengah) -->
+    <!-- NAVBAR STICKY -->
     <nav class="navbar">
         <div class="navbar-inner">
             <a href="/" class="navbar-brand">
@@ -384,10 +390,17 @@
     </nav>
 
     <main class="main-wrapper">
-        <header class="page-header">
+        <!-- Header dengan gambar di atas -->
+        <div class="page-header">
+            <img 
+                src="https://lapak.netlify.app/images/pic1.webp" 
+                alt="Curated Websites" 
+                class="header-image"
+                loading="lazy"
+            >
             <h1>Curated Best Websites</h1>
             <p class="subtitle">A quiet collection of noteworthy corners on the internet.</p>
-        </header>
+        </div>
 
         <div class="accordion" id="accordion">
 
@@ -397,7 +410,7 @@
                     <span>Betterlyfe</span>
                     <span class="accordion-arrows">
                         <i data-lucide="chevron-down" class="arrow-down"></i>
-                        <i data-lucide="chevron-right" class="arrow-right"></i>
+                        <i data-lucide="chevron-up" class="arrow-up"></i>
                     </span>
                 </button>
                 <div class="accordion-content-wrapper">
@@ -421,7 +434,7 @@
                     <span>Amonium</span>
                     <span class="accordion-arrows">
                         <i data-lucide="chevron-down" class="arrow-down"></i>
-                        <i data-lucide="chevron-right" class="arrow-right"></i>
+                        <i data-lucide="chevron-up" class="arrow-up"></i>
                     </span>
                 </button>
                 <div class="accordion-content-wrapper">
@@ -445,7 +458,7 @@
                     <span>Aether</span>
                     <span class="accordion-arrows">
                         <i data-lucide="chevron-down" class="arrow-down"></i>
-                        <i data-lucide="chevron-right" class="arrow-right"></i>
+                        <i data-lucide="chevron-up" class="arrow-up"></i>
                     </span>
                 </button>
                 <div class="accordion-content-wrapper">
@@ -469,7 +482,7 @@
                     <span>Solace</span>
                     <span class="accordion-arrows">
                         <i data-lucide="chevron-down" class="arrow-down"></i>
-                        <i data-lucide="chevron-right" class="arrow-right"></i>
+                        <i data-lucide="chevron-up" class="arrow-up"></i>
                     </span>
                 </button>
                 <div class="accordion-content-wrapper">
@@ -490,29 +503,20 @@
         </div>
     </main>
 
-    <!-- FOOTER (ikon Lucide) -->
+    <!-- FOOTER: hanya ikon "@" + status & copyright -->
     <footer class="site-footer">
         <div class="footer-inner">
 
-            <!-- Row 1: Social media & blog icons centered -->
+            <!-- Baris 1: Ikon @ menuju betterlyfe.netlify.app -->
             <div class="footer-row">
                 <div class="footer-icons">
-                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                        <i data-lucide="instagram"></i>
-                    </a>
-                    <a href="https://threads.net" target="_blank" rel="noopener" aria-label="Threads">
+                    <a href="https://betterlyfe.netlify.app" target="_blank" rel="noopener" aria-label="Betterlyfe">
                         <i data-lucide="at-sign"></i>
-                    </a>
-                    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <i data-lucide="phone"></i>
-                    </a>
-                    <a href="https://betterlyfe.netlify.app" target="_blank" rel="noopener" aria-label="Blog">
-                        <i data-lucide="globe"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Row 2: Status + Copyright -->
+            <!-- Baris 2: All systems work + © OBSRV/club | tahun -->
             <div class="footer-row">
                 <div class="status">
                     <span class="status-dot"></span> All systems work
@@ -555,7 +559,6 @@
                 updateAria();
             });
 
-            // Tahun otomatis
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
             // Inisialisasi Lucide icons
