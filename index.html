@@ -24,7 +24,9 @@
             --green-glow: #00e676;
         }
 
-        * {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -35,12 +37,13 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* ===== NAVBAR STICKY ===== */
+        /* ========== NAVBAR STICKY ========== */
         .navbar {
             position: sticky;
             top: 0;
@@ -66,6 +69,7 @@
             align-items: baseline;
             gap: 0.4rem;
             text-decoration: none;
+            line-height: 1.2;
         }
 
         .navbar-main {
@@ -81,27 +85,29 @@
             font-size: 0.95rem;
             font-style: italic;
             color: var(--text-secondary);
+            font-weight: 400;
         }
 
-        /* ===== AT SIGN BESAR DI KANAN ===== */
+        /* ========== AT SIGN DI KANAN NAVBAR ========== */
         .nav-at {
+            flex-shrink: 0;
             display: flex;
             align-items: center;
         }
-        .at-large {
+        .at-link {
             font-family: var(--font-body);
-            font-size: 1.5rem;
+            font-size: 1.4rem;   /* ← Ubah sesuai keinginan Anda */
             font-weight: 500;
             line-height: 1;
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s;
         }
-        .at-large:hover {
+        .at-link:hover {
             color: var(--text);
         }
 
-        /* ===== MAIN CONTENT ===== */
+        /* ========== MAIN CONTENT ========== */
         .main-wrapper {
             max-width: var(--max-width);
             margin: 0 auto;
@@ -113,30 +119,33 @@
         .page-header {
             padding-top: 1.8rem;
             padding-bottom: 2.5rem;
+            text-align: left;
         }
 
         .header-image {
+            display: block;
             width: 100%;
             height: auto;
             margin-bottom: 2rem;
             border-radius: 8px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
         }
 
         .page-header h1 {
             font-family: var(--font-heading);
             font-size: 2.25rem;
             font-weight: 400;
+            letter-spacing: -0.02em;
             line-height: 1.2;
             margin-bottom: 0.4rem;
         }
 
-        .subtitle {
+        .page-header .subtitle {
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
 
-        /* ===== ACCORDION (native simbol ▼▲) ===== */
+        /* ========== ACCORDION ========== */
         .accordion {
             display: flex;
             flex-direction: column;
@@ -151,34 +160,56 @@
 
         .accordion-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             width: 100%;
             padding: 1.4rem 0;
+            cursor: pointer;
             background: none;
             border: none;
             font-family: var(--font-heading);
             font-size: 1.25rem;
             font-weight: 400;
-            cursor: pointer;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            text-align: left;
             gap: 1rem;
+            transition: opacity 0.25s ease;
         }
         .accordion-header:hover {
             opacity: 0.65;
         }
 
         .accordion-arrows {
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 1.4rem;
+            height: 1.4rem;
             color: var(--text-secondary);
+            font-size: 1.2rem;
         }
         .accordion-item.active .accordion-arrows {
             color: var(--text);
+        }
+        .accordion-arrows .arrow-down {
+            display: block;
+        }
+        .accordion-arrows .arrow-up {
+            display: none;
+        }
+        .accordion-item.active .accordion-arrows .arrow-down {
+            display: none;
+        }
+        .accordion-item.active .accordion-arrows .arrow-up {
+            display: block;
         }
 
         .accordion-content-wrapper {
             display: grid;
             grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s ease;
+            transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .accordion-item.active .accordion-content-wrapper {
             grid-template-rows: 1fr;
@@ -204,23 +235,29 @@
 
         .accordion-image {
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 6px;
             border: 1px solid var(--border-light);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            background-color: #f0ede8;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
         }
 
         .accordion-description {
             font-size: 0.9rem;
             color: var(--text-secondary);
+            line-height: 1.55;
             max-width: 90%;
         }
 
         .accordion-visit {
             align-self: flex-end;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
             font-size: 0.8rem;
             font-weight: 500;
+            letter-spacing: 0.02em;
             color: var(--text);
             text-decoration: none;
             padding: 0.4rem 0.9rem;
@@ -228,28 +265,34 @@
             border-radius: 30px;
             background: var(--white);
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            transition: all 0.15s;
+            transition: all 0.15s ease;
         }
         .accordion-visit:hover {
-            background: var(--text);
+            background-color: var(--text);
             color: var(--white);
+            border-color: var(--text);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
-        /* ===== FOOTER (tanpa border-top) ===== */
+        /* ========== FOOTER - GARIS DI ATAS DIHAPUS ========== */
         .site-footer {
             margin-top: 4rem;
             padding: 2rem 0 1.5rem;
+            /* border-top: none;  (garis dihapus) */
         }
+
         .footer-inner {
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+
         .footer-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
+
         .status {
             display: flex;
             align-items: center;
@@ -257,143 +300,241 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
+
         .status-dot {
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            background: var(--green-glow);
-            box-shadow: 0 0 8px var(--green-glow);
+            background-color: var(--green-glow);
+            display: inline-block;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px var(--green-glow), 0 0 14px rgba(0, 230, 118, 0.5);
         }
+
         .copyright {
             font-size: 0.8rem;
             color: #999;
+            white-space: nowrap;
         }
 
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 600px) {
-            .navbar-main { font-size: 1.35rem; }
-            .navbar-by { font-size: 0.85rem; }
-            .at-large { font-size: 1.9rem; } /* tetap besar di mobile */
-            .page-header h1 { font-size: 1.7rem; }
-            .accordion-header { font-size: 1.1rem; }
-            .navbar-inner, .main-wrapper, .footer-inner { padding: 0 1rem; }
+            .page-header h1 {
+                font-size: 1.7rem;
+            }
+            .accordion-header {
+                font-size: 1.1rem;
+                padding: 1.2rem 0;
+            }
+            .accordion-description {
+                max-width: 100%;
+            }
+            .navbar-inner,
+            .main-wrapper,
+            .footer-inner {
+                padding: 0 1rem;
+            }
+            .navbar-main {
+                font-size: 1.35rem;
+            }
+            .navbar-by {
+                font-size: 0.85rem;
+            }
+            .footer-row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .status {
+                font-size: 0.75rem;
+            }
+            .copyright {
+                font-size: 0.75rem;
+            }
+            .at-link {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="navbar-inner">
-        <a href="/" class="navbar-brand">
-            <span class="navbar-main">betterwebs</span>
-            <span class="navbar-by">by betterlyfe</span>
-        </a>
-        <div class="nav-at">
-            <a href="https://betterlyfe.netlify.app" class="at-large" target="_blank" rel="noopener noreferrer" aria-label="Betterlyfe">@</a>
+    <!-- NAVBAR STICKY: kiri betterwebs by betterlyfe, kanan @ -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+                <span class="navbar-main">betterwebs</span>
+                <span class="navbar-by">by betterlyfe</span>
+            </a>
+            <div class="nav-at">
+                <a href="https://betterlyfe.netlify.app" class="at-link" target="_blank" rel="noopener noreferrer" aria-label="Betterlyfe">
+                    @
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<main class="main-wrapper">
-    <div class="page-header">
-        <img src="https://lapak.netlify.app/images/pic1.webp" alt="Curated Websites" class="header-image" loading="lazy">
-        <h1>Curated Best Websites</h1>
-        <p class="subtitle">A quiet collection of noteworthy corners on the internet.</p>
-    </div>
+    <main class="main-wrapper">
+        <div class="page-header">
+            <img 
+                src="https://lapak.netlify.app/images/pic1.webp" 
+                alt="Curated Websites" 
+                class="header-image"
+                loading="lazy"
+            >
+            <h1>Curated Best Websites</h1>
+            <p class="subtitle">A quiet collection of noteworthy corners on the internet.</p>
+        </div>
 
-    <div class="accordion" id="accordion">
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>Betterlyfe</span>
-                <span class="accordion-arrows">▼</span>
-            </button>
-            <div class="accordion-content-wrapper">
-                <div class="accordion-content-inner">
-                    <div class="accordion-content-body">
-                        <img class="accordion-image" src="https://picsum.photos/seed/betterlyfe/700/350" alt="Betterlyfe">
-                        <p class="accordion-description">Mindful wellness hub — breathwork, cold exposure, grounded living.</p>
-                        <a href="https://betterlyfe.netlify.app" class="accordion-visit" target="_blank">VISIT</a>
+        <div class="accordion" id="accordion">
+
+            <!-- Item 1: Betterlyfe -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span>Betterlyfe</span>
+                    <span class="accordion-arrows">
+                        <span class="arrow-down">▼</span>
+                        <span class="arrow-up">▲</span>
+                    </span>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content-inner">
+                        <div class="accordion-content-body">
+                            <img class="accordion-image" src="https://picsum.photos/seed/betterlyfe/700/350" alt="Betterlyfe" loading="lazy">
+                            <p class="accordion-description">
+                                A mindful wellness hub pairing modern science with ancient rituals — breathwork, cold exposure, and grounded living.
+                            </p>
+                            <a href="https://betterlyfe.netlify.app" class="accordion-visit" target="_blank" rel="noopener noreferrer">
+                                VISIT
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>Amonium</span>
-                <span class="accordion-arrows">▼</span>
-            </button>
-            <div class="accordion-content-wrapper">
-                <div class="accordion-content-inner">
-                    <div class="accordion-content-body">
-                        <img class="accordion-image" src="https://picsum.photos/seed/amonium/700/350" alt="Amonium">
-                        <p class="accordion-description">Creative studio — visual identities, editorial design, digital experiences.</p>
-                        <a href="#" class="accordion-visit" target="_blank">VISIT</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>Aether</span>
-                <span class="accordion-arrows">▼</span>
-            </button>
-            <div class="accordion-content-wrapper">
-                <div class="accordion-content-inner">
-                    <div class="accordion-content-body">
-                        <img class="accordion-image" src="https://picsum.photos/seed/aether/700/350" alt="Aether">
-                        <p class="accordion-description">Living archive of design resources — typefaces, palettes, templates.</p>
-                        <a href="#" class="accordion-visit" target="_blank">VISIT</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span>Solace</span>
-                <span class="accordion-arrows">▼</span>
-            </button>
-            <div class="accordion-content-wrapper">
-                <div class="accordion-content-inner">
-                    <div class="accordion-content-body">
-                        <img class="accordion-image" src="https://picsum.photos/seed/solace/700/350" alt="Solace">
-                        <p class="accordion-description">Slow productivity — gentle timers, ambient soundscapes, writing space.</p>
-                        <a href="#" class="accordion-visit" target="_blank">VISIT</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
 
-<footer class="site-footer">
-    <div class="footer-inner">
-        <div class="footer-row">
-            <div class="status"><span class="status-dot"></span> All systems work</div>
-            <div class="copyright">&copy; OBSRV/club | <span id="footer-year"></span></div>
-        </div>
-    </div>
-</footer>
+            <!-- Item 2: Amonium -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span>Amonium</span>
+                    <span class="accordion-arrows">
+                        <span class="arrow-down">▼</span>
+                        <span class="arrow-up">▲</span>
+                    </span>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content-inner">
+                        <div class="accordion-content-body">
+                            <img class="accordion-image" src="https://picsum.photos/seed/amonium/700/350" alt="Amonium" loading="lazy">
+                            <p class="accordion-description">
+                                A bold creative studio crafting visual identities, editorial design, and immersive digital experiences.
+                            </p>
+                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
+                                VISIT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<script>
-    (function() {
-        const items = document.querySelectorAll('.accordion-item');
-        function updateAria() {
-            items.forEach(item => {
-                const btn = item.querySelector('.accordion-header');
-                btn.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+            <!-- Item 3: Aether -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span>Aether</span>
+                    <span class="accordion-arrows">
+                        <span class="arrow-down">▼</span>
+                        <span class="arrow-up">▲</span>
+                    </span>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content-inner">
+                        <div class="accordion-content-body">
+                            <img class="accordion-image" src="https://picsum.photos/seed/aether/700/350" alt="Aether" loading="lazy">
+                            <p class="accordion-description">
+                                A living archive of timeless design resources — typefaces, color palettes, and templates.
+                            </p>
+                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
+                                VISIT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Solace -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span>Solace</span>
+                    <span class="accordion-arrows">
+                        <span class="arrow-down">▼</span>
+                        <span class="arrow-up">▲</span>
+                    </span>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content-inner">
+                        <div class="accordion-content-body">
+                            <img class="accordion-image" src="https://picsum.photos/seed/solace/700/350" alt="Solace" loading="lazy">
+                            <p class="accordion-description">
+                                A minimal toolkit for slow productivity — gentle timers, ambient soundscapes, and a frictionless writing space.
+                            </p>
+                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
+                                VISIT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-row">
+                <div class="status">
+                    <span class="status-dot"></span> All systems work
+                </div>
+                <div class="copyright">
+                    &copy; OBSRV/club | <span id="footer-year"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const accordion = document.getElementById('accordion');
+            const items = accordion.querySelectorAll('.accordion-item');
+
+            function updateAria() {
+                items.forEach(item => {
+                    const header = item.querySelector('.accordion-header');
+                    const active = item.classList.contains('active');
+                    header.setAttribute('aria-expanded', active ? 'true' : 'false');
+                });
+            }
+
+            // Event delegation untuk toggle accordion
+            accordion.addEventListener('click', function(e) {
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+
+                const clickedItem = header.closest('.accordion-item');
+                const isActive = clickedItem.classList.contains('active');
+
+                // Tutup semua
+                items.forEach(item => item.classList.remove('active'));
+
+                // Buka yang diklik jika belum aktif
+                if (!isActive) {
+                    clickedItem.classList.add('active');
+                }
+
+                updateAria();
             });
-        }
-        document.getElementById('accordion').addEventListener('click', (e) => {
-            const btn = e.target.closest('.accordion-header');
-            if (!btn) return;
-            const parent = btn.closest('.accordion-item');
-            const isActive = parent.classList.contains('active');
-            items.forEach(i => i.classList.remove('active'));
-            if (!isActive) parent.classList.add('active');
-            updateAria();
-        });
-        document.getElementById('footer-year').textContent = new Date().getFullYear();
-        // Semua icon native, tidak ada Lucide
-    })();
-</script>
+
+            // Set tahun otomatis di footer
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+        })();
+    </script>
+
 </body>
 </html>
