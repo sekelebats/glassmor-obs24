@@ -91,7 +91,7 @@
             text-align: left;
         }
 
-        /* KONTAK SOSIAL (di bawah subtitle) */
+        /* KONTAK SOSIAL (spacing lebih kecil seperti kode fix) */
         .social-links {
             margin: 0 0 3.5rem 0;
             padding: 0;
@@ -102,7 +102,7 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 0.45rem 0;
+            padding: 0.3rem 0;
             border-bottom: 1px solid #f2f2f2;
             font-size: 16px;
         }
@@ -153,8 +153,9 @@
             margin: 0;
         }
 
+        /* Notes spacing: padding atas-bawah besar, divider tetap tipis */
         .note-item {
-            padding: 1.8rem 0 1.8rem 0;
+            padding: 2rem 0 2.2rem 0;
             border-bottom: 1px solid #f2f2f2;
         }
 
@@ -198,6 +199,15 @@
             margin: 0;
         }
 
+        /* Paragraf dalam note */
+        .note-body p {
+            margin: 0 0 0.8rem 0;
+        }
+
+        .note-body p:last-child {
+            margin-bottom: 0;
+        }
+
         /* FOOTER */
         .footer-text {
             text-align: center;
@@ -235,7 +245,7 @@
             }
             .social-links li,
             .note-item {
-                padding: 1.2rem 0;
+                padding: 1.4rem 0 1.6rem 0;
             }
             .meta {
                 font-size: 11px;
@@ -249,13 +259,12 @@
         <div class="header">
             <div class="logo">OBSRV/club</div>
             <div class="header-right">
-                <!-- Tombol Status sebagai link dummy -->
                 <a href="https://status.dummy.url" class="status-btn" target="_blank" rel="noopener">Status</a>
                 <div class="time" id="liveTime">—</div>
             </div>
         </div>
 
-        <!-- SUBTITLE (diperbaiki) -->
+        <!-- SUBTITLE -->
         <h1 class="subtitle">
             Hi, hello. This is FZH Blog. In this blog you will find my mind, my thoughts, and a bit of work.
         </h1>
@@ -287,40 +296,42 @@
 
         <!-- NOTES SECTION -->
         <ul class="notes-list">
-            <!-- Note 1 -->
+            <!-- Note 1 (dengan 2 paragraf) -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
                 <span class="note-date">24 May 2026</span>
-                <p class="note-body">
-                    Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind.
-                </p>
+                <div class="note-body">
+                    <p>Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind.</p>
+                    <p>Now I write for myself first. If someone reads it, that's a bonus — not a metric to optimize.</p>
+                </div>
             </li>
 
             <!-- Note 2 -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
                 <span class="note-date">18 May 2026</span>
-                <p class="note-body">
-                    A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.
-                </p>
+                <div class="note-body">
+                    <p>A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.</p>
+                </div>
             </li>
 
             <!-- Note 3 -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
                 <span class="note-date">10 May 2026</span>
-                <p class="note-body">
-                    Good type won't save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.
-                </p>
+                <div class="note-body">
+                    <p>Good type won't save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.</p>
+                </div>
             </li>
 
-            <!-- Note 4 -->
+            <!-- Note 4 (dengan 2 paragraf) -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
                 <span class="note-date">02 May 2026</span>
-                <p class="note-body">
-                    The internet used to be full of half-built pages. I miss that energy. This is an appreciation post for the incomplete.
-                </p>
+                <div class="note-body">
+                    <p>The internet used to be full of half-built pages. I miss that energy. This is an appreciation post for the incomplete.</p>
+                    <p>Maybe perfection is overrated. Maybe the beauty is in the process, not the final product.</p>
+                </div>
             </li>
         </ul>
 
