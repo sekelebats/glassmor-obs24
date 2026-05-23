@@ -1,540 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betterlyfe — Curated Best Websites</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fzh.blog</title>
 
-    <!-- Google Fonts: Newsreader -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <!-- Google Material Symbols (arrow_outward) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
 
     <style>
-        :root {
-            --max-width: 750px;
-            --bg: #fafaf8;
-            --text: #1a1a1a;
-            --text-secondary: #6b6b6b;
-            --border: #e5e2dc;
-            --border-light: #efede9;
-            --white: #ffffff;
-            --font-heading: 'Newsreader', 'Times New Roman', Georgia, serif;
-            --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --green-glow: #00e676;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        /* ========== FONT SYSTEM UI ========== */
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 2rem 1.2rem;
+            background: #fff;
+            color: #111;
+            font-size: 16px;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-        }
-
-        /* ========== NAVBAR STICKY ========== */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(250, 250, 248, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            padding: 1rem 0;
-        }
-
-        .navbar-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .navbar-brand {
-            display: flex;
-            align-items: baseline;
-            gap: 0.4rem;
-            text-decoration: none;
-            line-height: 1.2;
-        }
-
-        .navbar-main {
-            font-family: var(--font-body);
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: var(--text);
-        }
-
-        .navbar-by {
-            font-family: var(--font-heading);
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* ========== AT SIGN DI KANAN NAVBAR ========== */
-        .nav-at {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-        }
-        .at-link {
-            font-family: var(--font-body);
-            font-size: 0.9rem !important;
-            font-weight: 500;
-            line-height: 1;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .at-link:hover {
-            color: var(--text);
-        }
-
-        /* ========== MAIN CONTENT ========== */
-        .main-wrapper {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            width: 100%;
-            flex: 1;
-        }
-
-        .page-header {
-            padding-top: 1.8rem;
-            padding-bottom: 2.5rem;
-            text-align: left;
-        }
-
-        .header-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-        }
-
-        .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: 2.25rem;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 0.4rem;
-        }
-
-        .page-header .subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* ========== ACCORDION ========== */
-        .accordion {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .accordion-item {
-            border-top: 1px solid var(--border);
-        }
-        .accordion-item:last-child {
-            border-bottom: 1px solid var(--border);
-        }
-
-        .accordion-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 1.4rem 0;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: var(--text);
-            letter-spacing: -0.01em;
-            text-align: left;
-            gap: 1rem;
-            transition: opacity 0.25s ease;
-        }
-        .accordion-header:hover {
-            opacity: 0.65;
-        }
-
-        .accordion-arrows {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            width: 1.4rem;
-            height: 1.4rem;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-        }
-        .accordion-item.active .accordion-arrows {
-            color: var(--text);
-        }
-        .accordion-arrows .arrow-down {
-            display: block;
-        }
-        .accordion-arrows .arrow-up {
-            display: none;
-        }
-        .accordion-item.active .accordion-arrows .arrow-down {
-            display: none;
-        }
-        .accordion-item.active .accordion-arrows .arrow-up {
-            display: block;
         }
 
-        .accordion-content-wrapper {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .accordion-item.active .accordion-content-wrapper {
-            grid-template-rows: 1fr;
-        }
-
-        .accordion-content-inner {
-            overflow: hidden;
-        }
-
-        .accordion-content-body {
-            padding-bottom: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            opacity: 0;
-            transform: translateY(-8px);
-            transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-        }
-        .accordion-item.active .accordion-content-body {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .accordion-image {
+        .main {
+            max-width: 600px;
             width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid var(--border-light);
-            background-color: #f0ede8;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            text-align: left;
         }
 
-        .accordion-description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.55;
-            max-width: 90%;
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.2rem;
         }
 
-        .accordion-visit {
-            align-self: flex-end;
+        .logo {
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -0.02em;
+            color: #000;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #999;
+            font-weight: 400;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* TOMBOL STATUS (link, style sama seperti tombol Demo) */
+        .status-btn {
+            background: none;
+            border: 1.5px solid #222;
+            border-radius: 20px;
+            padding: 3px 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            background: #fff;
+            color: #222;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .status-btn:hover {
+            background: #f5f5f5;
+        }
+
+        /* Tidak ada mode active khusus, hanya hover */
+
+        /* SUBTITLE (diperbaiki) */
+        .subtitle {
+            font-size: 23px;
+            font-weight: 450;
+            margin: 0 0 1.5rem 0;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        /* KONTAK SOSIAL (di bawah subtitle) */
+        .social-links {
+            margin: 0 0 3.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .social-links li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.45rem 0;
+            border-bottom: 1px solid #f2f2f2;
+            font-size: 16px;
+        }
+
+        .social-links li:last-child {
+            border-bottom: none;
+        }
+
+        .social-links a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            color: var(--text);
-            text-decoration: none;
-            padding: 0.4rem 0.9rem;
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            background: var(--white);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            transition: all 0.15s ease;
-        }
-        .accordion-visit:hover {
-            background-color: var(--text);
-            color: var(--white);
-            border-color: var(--text);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            gap: 0.25rem;
+            transition: color 0.15s;
         }
 
-        /* ========== FOOTER - GARIS DI ATAS DIHAPUS ========== */
-        .site-footer {
-            margin-top: 4rem;
-            padding: 2rem 0 1.5rem;
-            /* border-top: none;  (garis dihapus) */
+        .social-links a .material-symbols-outlined.arrow-icon {
+            font-size: 18px;
+            color: #666;
+            transition: color 0.15s, transform 0.15s;
         }
 
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .social-links a:hover {
+            color: #222;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
-        .footer-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .social-links a:hover .arrow-icon {
+            color: #000;
+            transform: translate(2px, -2px);
         }
 
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .status-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background-color: var(--green-glow);
-            display: inline-block;
-            flex-shrink: 0;
-            box-shadow: 0 0 8px var(--green-glow), 0 0 14px rgba(0, 230, 118, 0.5);
-        }
-
-        .copyright {
-            font-size: 0.8rem;
+        .social-links .meta {
+            font-size: 12px;
             color: #999;
+            font-weight: 400;
             white-space: nowrap;
+            margin-left: 0.75rem;
         }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 600px) {
-            .page-header h1 {
-                font-size: 1.7rem;
+        /* SECTION NOTES (tanpa label) */
+        .notes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .note-item {
+            padding: 1.2rem 0 1.2rem 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        .note-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Judul note sebagai link */
+        .note-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 0.35rem;
+            transition: color 0.15s;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .note-title:hover {
+            color: #222;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* Tanggal */
+        .note-date {
+            font-size: 12px;
+            color: #999;
+            font-weight: 400;
+            margin-bottom: 0.7rem;
+            display: block;
+        }
+
+        /* Isi catatan */
+        .note-body {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* FOOTER */
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: #bbb;
+            margin-top: 2.8rem;
+            padding-top: 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.8rem 1rem;
             }
-            .accordion-header {
-                font-size: 1.1rem;
-                padding: 1.2rem 0;
+            .subtitle {
+                font-size: 21px;
             }
-            .accordion-description {
-                max-width: 100%;
+            .note-title {
+                font-size: 17px;
             }
-            .navbar-inner,
-            .main-wrapper,
-            .footer-inner {
-                padding: 0 1rem;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1.4rem 0.8rem;
             }
-            .navbar-main {
-                font-size: 1.35rem;
+            .subtitle {
+                font-size: 19px;
             }
-            .navbar-by {
-                font-size: 0.85rem;
+            .note-title {
+                font-size: 16px;
             }
-            .footer-row {
-                flex-direction: row;
-                justify-content: space-between;
+            .note-body {
+                font-size: 15px;
             }
-            .status {
-                font-size: 0.75rem;
+            .social-links li,
+            .note-item {
+                padding: 0.55rem 0;
             }
-            .copyright {
-                font-size: 0.75rem;
-            }
-            .at-link {
-                font-size: 1.3rem;
+            .meta {
+                font-size: 11px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="main">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">OBSRV/club</div>
+            <div class="header-right">
+                <!-- Tombol Status sebagai link dummy -->
+                <a href="https://status.dummy.url" class="status-btn" target="_blank" rel="noopener">Status</a>
+                <div class="time" id="liveTime">—</div>
+            </div>
+        </div>
 
-    <!-- NAVBAR STICKY: kiri betterwebs by betterlyfe, kanan @ -->
-    <nav class="navbar">
-        <div class="navbar-inner">
-            <a href="/" class="navbar-brand">
-                <span class="navbar-main">betterwebs</span>
-                <span class="navbar-by">by betterlyfe</span>
-            </a>
-            <div class="nav-at">
-                <a href="https://betterlyfe.netlify.app" class="at-link" target="_blank" rel="noopener noreferrer" aria-label="Betterlyfe">
-                    [lyfe]
+        <!-- SUBTITLE (diperbaiki) -->
+        <h1 class="subtitle">
+            Hi, hello. This is FZH Blog. In this blog you will find my mind, my thoughts, and a bit of work.
+        </h1>
+
+        <!-- KONTAK SOSIAL & EMAIL -->
+        <ul class="social-links">
+            <li>
+                <a href="mailto:itshabyyy@gmail.com">
+                    Email
+                    <span class="material-symbols-outlined arrow-icon">arrow_outward</span>
                 </a>
-            </div>
+                <span class="meta">Mail me</span>
+            </li>
+            <li>
+                <a href="https://instagram.com/notes.fzh" target="_blank" rel="noopener">
+                    Instagram
+                    <span class="material-symbols-outlined arrow-icon">arrow_outward</span>
+                </a>
+                <span class="meta">DM</span>
+            </li>
+            <li>
+                <a href="https://threads.net/notes.fzh" target="_blank" rel="noopener">
+                    Threads
+                    <span class="material-symbols-outlined arrow-icon">arrow_outward</span>
+                </a>
+                <span class="meta">Follow</span>
+            </li>
+        </ul>
+
+        <!-- NOTES SECTION -->
+        <ul class="notes-list">
+            <!-- Note 1 -->
+            <li class="note-item">
+                <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
+                <span class="note-date">24 May 2026</span>
+                <p class="note-body">
+                    Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind.
+                </p>
+            </li>
+
+            <!-- Note 2 -->
+            <li class="note-item">
+                <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
+                <span class="note-date">18 May 2026</span>
+                <p class="note-body">
+                    A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.
+                </p>
+            </li>
+
+            <!-- Note 3 -->
+            <li class="note-item">
+                <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
+                <span class="note-date">10 May 2026</span>
+                <p class="note-body">
+                    Good type won’t save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.
+                </p>
+            </li>
+
+            <!-- Note 4 -->
+            <li class="note-item">
+                <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
+                <span class="note-date">02 May 2026</span>
+                <p class="note-body">
+                    The internet used to be full of half‑built pages. I miss that energy. This is an appreciation post for the incomplete.
+                </p>
+            </li>
+        </ul>
+
+        <!-- FOOTER -->
+        <div class="footer-text">
+            &copy; Under obsrv.club — All rights reserved 2026
         </div>
-    </nav>
+    </div>
 
-    <main class="main-wrapper">
-        <div class="page-header">
-            <img 
-                src="https://lapak.netlify.app/images/pic1.webp" 
-                alt="Curated Websites" 
-                class="header-image"
-                loading="lazy"
-            >
-            <h1>Curated Best Websites</h1>
-            <p class="subtitle">/ kumpulan website terbaik yang sudah saya kurasi sendiri, tidak ada iklan, titipan atau paksaan untuk koleksi ini yanga ada hanya pure-beauty.</p>
-        </div>
-
-        <div class="accordion" id="accordion">
-
-            <!-- Item 1: Betterlyfe -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Betterlyfe</span>
-                    <span class="accordion-arrows">
-                        <span class="arrow-down">▼</span>
-                        <span class="arrow-up">▲</span>
-                    </span>
-                </button>
-                <div class="accordion-content-wrapper">
-                    <div class="accordion-content-inner">
-                        <div class="accordion-content-body">
-                            <img class="accordion-image" src="https://picsum.photos/seed/betterlyfe/700/350" alt="Betterlyfe" loading="lazy">
-                            <p class="accordion-description">
-                                A mindful wellness hub pairing modern science with ancient rituals — breathwork, cold exposure, and grounded living.
-                            </p>
-                            <a href="https://betterlyfe.netlify.app" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                VISIT
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 2: Amonium -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Amonium</span>
-                    <span class="accordion-arrows">
-                        <span class="arrow-down">▼</span>
-                        <span class="arrow-up">▲</span>
-                    </span>
-                </button>
-                <div class="accordion-content-wrapper">
-                    <div class="accordion-content-inner">
-                        <div class="accordion-content-body">
-                            <img class="accordion-image" src="https://picsum.photos/seed/amonium/700/350" alt="Amonium" loading="lazy">
-                            <p class="accordion-description">
-                                A bold creative studio crafting visual identities, editorial design, and immersive digital experiences.
-                            </p>
-                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                VISIT
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 3: Aether -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Aether</span>
-                    <span class="accordion-arrows">
-                        <span class="arrow-down">▼</span>
-                        <span class="arrow-up">▲</span>
-                    </span>
-                </button>
-                <div class="accordion-content-wrapper">
-                    <div class="accordion-content-inner">
-                        <div class="accordion-content-body">
-                            <img class="accordion-image" src="https://picsum.photos/seed/aether/700/350" alt="Aether" loading="lazy">
-                            <p class="accordion-description">
-                                A living archive of timeless design resources — typefaces, color palettes, and templates.
-                            </p>
-                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                VISIT
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 4: Solace -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Solace</span>
-                    <span class="accordion-arrows">
-                        <span class="arrow-down">▼</span>
-                        <span class="arrow-up">▲</span>
-                    </span>
-                </button>
-                <div class="accordion-content-wrapper">
-                    <div class="accordion-content-inner">
-                        <div class="accordion-content-body">
-                            <img class="accordion-image" src="https://picsum.photos/seed/solace/700/350" alt="Solace" loading="lazy">
-                            <p class="accordion-description">
-                                A minimal toolkit for slow productivity — gentle timers, ambient soundscapes, and a frictionless writing space.
-                            </p>
-                            <a href="#" class="accordion-visit" target="_blank" rel="noopener noreferrer">
-                                VISIT
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-row">
-                <div class="status">
-                    <span class="status-dot"></span> All systems work
-                </div>
-                <div class="copyright">
-                    &copy; OBSRV/club | <span id="footer-year"></span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <!-- JAM -->
     <script>
-        (function() {
-            const accordion = document.getElementById('accordion');
-            const items = accordion.querySelectorAll('.accordion-item');
-
-            function updateAria() {
-                items.forEach(item => {
-                    const header = item.querySelector('.accordion-header');
-                    const active = item.classList.contains('active');
-                    header.setAttribute('aria-expanded', active ? 'true' : 'false');
-                });
-            }
-
-            // Event delegation untuk toggle accordion
-            accordion.addEventListener('click', function(e) {
-                const header = e.target.closest('.accordion-header');
-                if (!header) return;
-
-                const clickedItem = header.closest('.accordion-item');
-                const isActive = clickedItem.classList.contains('active');
-
-                // Tutup semua
-                items.forEach(item => item.classList.remove('active'));
-
-                // Buka yang diklik jika belum aktif
-                if (!isActive) {
-                    clickedItem.classList.add('active');
-                }
-
-                updateAria();
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('liveTime').textContent = now.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
             });
-
-            // Set tahun otomatis di footer
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
-        })();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
-
 </body>
 </html>
