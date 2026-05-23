@@ -57,7 +57,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* TOMBOL STATUS (sama persis dengan kode fix: padding 3px 15px, font 11px) */
+        /* TOMBOL STATUS (sama persis dengan kode fix) */
         .status-btn {
             background: none;
             border: 1.5px solid #222;
@@ -91,7 +91,7 @@
             text-align: left;
         }
 
-        /* KONTAK SOSIAL (sama persis dengan kode fix: 0.45rem) */
+        /* KONTAK SOSIAL */
         .social-links {
             margin: 0 0 3.5rem 0;
             padding: 0;
@@ -188,6 +188,7 @@
             display: block;
         }
 
+        /* ISI CATATAN */
         .note-body {
             font-size: 16px;
             color: #333;
@@ -201,6 +202,108 @@
 
         .note-body p:last-child {
             margin-bottom: 0;
+        }
+
+        /* LINK dalam paragraf: otomatis pakai ikon arrow_outward ukuran 16px */
+        .note-body a[href^="http"]::after,
+        .note-body a[href^="https"]::after {
+            content: "arrow_outward";
+            font-family: 'Material Symbols Outlined';
+            font-size: 16px;
+            vertical-align: -0.2em;
+            margin-left: 0.15em;
+            color: #666;
+            display: inline-block;
+            transition: color 0.15s, transform 0.15s;
+        }
+
+        .note-body a:hover::after {
+            color: #000;
+            transform: translate(2px, -2px);
+        }
+
+        .note-body a {
+            color: #000;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .note-body a:hover {
+            color: #222;
+        }
+
+        /* BLOCKQUOTE */
+        .note-body blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            border-left: 3px solid #ccc;
+            background: #fafafa;
+            color: #444;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note-body blockquote p {
+            margin: 0;
+        }
+
+        /* INLINE CODE */
+        .note-body code {
+            background: #f4f4f4;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.9em;
+            color: #333;
+            border: 1px solid #eee;
+        }
+
+        /* CODE BLOCK */
+        .note-body pre {
+            background: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            overflow-x: auto;
+            margin: 1.2rem 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .note-body pre code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+            border-radius: 0;
+        }
+
+        /* UNORDERED LIST */
+        .note-body ul {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .note-body ul li {
+            margin-bottom: 0.4rem;
+            padding: 0;
+            border-bottom: none;
+            font-size: inherit;
+        }
+
+        /* ORDERED LIST */
+        .note-body ol {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .note-body ol li {
+            margin-bottom: 0.4rem;
+            padding: 0;
+            border-bottom: none;
+            font-size: inherit;
         }
 
         /* FOOTER */
@@ -238,13 +341,9 @@
             .note-body {
                 font-size: 15px;
             }
-
-            /* HANYA note-item yang padding-nya disesuaikan */
             .note-item {
                 padding: 1.8rem 0 2rem 0;
             }
-
-            /* Social links TIDAK disentuh — tetap 0.45rem */
             .meta {
                 font-size: 11px;
             }
@@ -289,35 +388,63 @@
             </li>
         </ul>
 
+        <!-- NOTES -->
         <ul class="notes-list">
             <li class="note-item">
                 <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
                 <span class="note-date">24 May 2026</span>
                 <div class="note-body">
-                    <p>Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind.</p>
+                    <p>Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind. I wrote about this journey on <a href="https://example.com">my old blog</a>.</p>
                     <p>Now I write for myself first. If someone reads it, that's a bonus — not a metric to optimize.</p>
                 </div>
             </li>
+
             <li class="note-item">
                 <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
                 <span class="note-date">18 May 2026</span>
                 <div class="note-body">
                     <p>A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.</p>
+                    <p>Here's the raw list:</p>
+                    <ul>
+                        <li>Editor: <code>nvim</code> with minimal plugins</li>
+                        <li>Browser: Firefox with containers</li>
+                        <li>Notes: Plain markdown in a folder</li>
+                    </ul>
+                    <p>And the core philosophy:</p>
+                    <blockquote>
+                        <p>Use tools that disappear. If you notice the tool more than the work, it's not the right tool.</p>
+                    </blockquote>
                 </div>
             </li>
+
             <li class="note-item">
                 <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
                 <span class="note-date">10 May 2026</span>
                 <div class="note-body">
                     <p>Good type won't save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.</p>
+                    <p>Here's a quick CSS snippet I often use:</p>
+                    <pre><code>body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}</code></pre>
+                    <p>It's not fancy, but it gets the job done.</p>
                 </div>
             </li>
+
             <li class="note-item">
                 <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
                 <span class="note-date">02 May 2026</span>
                 <div class="note-body">
                     <p>The internet used to be full of half-built pages. I miss that energy. This is an appreciation post for the incomplete.</p>
-                    <p>Maybe perfection is overrated. Maybe the beauty is in the process, not the final product.</p>
+                    <p>Reasons to keep things unfinished:</p>
+                    <ol>
+                        <li>It leaves room for change.</li>
+                        <li>It invites collaboration.</li>
+                        <li>It's honest about the process.</li>
+                    </ol>
+                    <p>If you're curious, I keep a log at <a href="https://dummy.buildlog.com">buildlog.fzh</a>.</p>
                 </div>
             </li>
         </ul>
