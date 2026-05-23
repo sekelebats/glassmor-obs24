@@ -57,7 +57,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* TOMBOL STATUS (link, style sama seperti tombol Demo) */
+        /* TOMBOL STATUS */
         .status-btn {
             background: none;
             border: 1.5px solid #222;
@@ -80,7 +80,7 @@
             background: #f5f5f5;
         }
 
-        /* SUBTITLE (diperkecil, 22px) */
+        /* SUBTITLE */
         .subtitle {
             font-size: 22px;
             font-weight: 450;
@@ -91,7 +91,7 @@
             text-align: left;
         }
 
-        /* KONTAK SOSIAL (spacing lebih kecil seperti kode fix) */
+        /* KONTAK SOSIAL (spacing disamakan dengan kode fix: 0.45rem) */
         .social-links {
             margin: 0 0 3.5rem 0;
             padding: 0;
@@ -102,7 +102,7 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 0.3rem 0;
+            padding: 0.45rem 0;    /* sama persis dengan kode fix */
             border-bottom: 1px solid #f2f2f2;
             font-size: 16px;
         }
@@ -146,16 +146,16 @@
             margin-left: 0.75rem;
         }
 
-        /* SECTION NOTES (tanpa label) */
+        /* NOTES LIST */
         .notes-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        /* Notes spacing: padding atas-bawah besar, divider tetap tipis */
+        /* Space antar notes lebih besar */
         .note-item {
-            padding: 2rem 0 2.2rem 0;
+            padding: 2.5rem 0 2.8rem 0;   /* lebih longgar */
             border-bottom: 1px solid #f2f2f2;
         }
 
@@ -163,7 +163,6 @@
             border-bottom: none;
         }
 
-        /* Judul note sebagai link */
         .note-title {
             font-size: 19px;
             font-weight: 600;
@@ -182,7 +181,6 @@
             text-underline-offset: 3px;
         }
 
-        /* Tanggal */
         .note-date {
             font-size: 12px;
             color: #999;
@@ -191,7 +189,6 @@
             display: block;
         }
 
-        /* Isi catatan */
         .note-body {
             font-size: 16px;
             color: #333;
@@ -199,7 +196,6 @@
             margin: 0;
         }
 
-        /* Paragraf dalam note */
         .note-body p {
             margin: 0 0 0.8rem 0;
         }
@@ -245,7 +241,7 @@
             }
             .social-links li,
             .note-item {
-                padding: 1.4rem 0 1.6rem 0;
+                padding: 1.8rem 0 2rem 0;   /* mobile tetap proporsional */
             }
             .meta {
                 font-size: 11px;
@@ -255,7 +251,6 @@
 </head>
 <body>
     <div class="main">
-        <!-- HEADER -->
         <div class="header">
             <div class="logo">OBSRV/club</div>
             <div class="header-right">
@@ -264,12 +259,10 @@
             </div>
         </div>
 
-        <!-- SUBTITLE -->
         <h1 class="subtitle">
             Hi, hello. This is FZH Blog. In this blog you will find my mind, my thoughts, and a bit of work.
         </h1>
 
-        <!-- KONTAK SOSIAL & EMAIL -->
         <ul class="social-links">
             <li>
                 <a href="mailto:itshabyyy@gmail.com">
@@ -294,9 +287,7 @@
             </li>
         </ul>
 
-        <!-- NOTES SECTION -->
         <ul class="notes-list">
-            <!-- Note 1 (dengan 2 paragraf) -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
                 <span class="note-date">24 May 2026</span>
@@ -305,8 +296,6 @@
                     <p>Now I write for myself first. If someone reads it, that's a bonus — not a metric to optimize.</p>
                 </div>
             </li>
-
-            <!-- Note 2 -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
                 <span class="note-date">18 May 2026</span>
@@ -314,8 +303,6 @@
                     <p>A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.</p>
                 </div>
             </li>
-
-            <!-- Note 3 -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
                 <span class="note-date">10 May 2026</span>
@@ -323,8 +310,6 @@
                     <p>Good type won't save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.</p>
                 </div>
             </li>
-
-            <!-- Note 4 (dengan 2 paragraf) -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
                 <span class="note-date">02 May 2026</span>
@@ -335,13 +320,11 @@
             </li>
         </ul>
 
-        <!-- FOOTER -->
         <div class="footer-text">
             &copy; Under obsrv.club — All rights reserved 2026
         </div>
     </div>
 
-    <!-- JAM -->
     <script>
         function updateTime() {
             const now = new Date();
