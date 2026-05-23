@@ -410,64 +410,111 @@
         </ul>
 
         <!-- NOTES -->
-        <ul class="notes-list">
-            <!-- Catatan 1... (isi sama) -->
-            <li class="note-item">
-                <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
-                <span class="note-date">24 May 2026</span>
-                <div class="note-body">
-                    <p>Tracking every click started to feel like performing. Removing numbers gave me back the joy of writing without an audience in mind. I wrote about this journey on <a href="https://example.com">my old blog</a>.</p>
-                    <p>Now I write for myself first. If someone reads it, that's a bonus — not a metric to optimize.</p>
-                </div>
-            </li>
-            <!-- ... dan catatan lainnya sama persis seperti sebelumnya, tidak diubah kontennya -->
-            <li class="note-item">
-                <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
-                <span class="note-date">18 May 2026</span>
-                <div class="note-body">
-                    <p>A brutally honest list. No sponsors, no affiliate links—just the apps and scripts that survived my relentless testing.</p>
-                    <p>Here's the raw list:</p>
-                    <ul>
-                        <li>Editor: <code>nvim</code> with minimal plugins</li>
-                        <li>Browser: Firefox with containers</li>
-                        <li>Notes: Plain markdown in a folder</li>
-                    </ul>
-                    <p>And the core philosophy:</p>
-                    <blockquote>
-                        <p>Use tools that disappear. If you notice the tool more than the work, it's not the right tool.</p>
-                    </blockquote>
-                </div>
-            </li>
-            <li class="note-item">
-                <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
-                <span class="note-date">10 May 2026</span>
-                <div class="note-body">
-                    <p>Good type won't save bad content, but bad type will absolutely ruin good content. Some notes from years of staring at letters.</p>
-                    <p>Here's a quick CSS snippet I often use:</p>
-                    <pre><code>body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-}</code></pre>
-                    <p>It's not fancy, but it gets the job done.</p>
-                </div>
-            </li>
-            <li class="note-item">
-                <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
-                <span class="note-date">02 May 2026</span>
-                <div class="note-body">
-                    <p>The internet used to be full of half-built pages. I miss that energy. This is an appreciation post for the incomplete.</p>
-                    <p>Reasons to keep things unfinished:</p>
-                    <ol>
-                        <li>It leaves room for change.</li>
-                        <li>It invites collaboration.</li>
-                        <li>It's honest about the process.</li>
-                    </ol>
-                    <p>If you're curious, I keep a log at <a href="https://dummy.buildlog.com">buildlog.fzh</a>.</p>
-                </div>
-            </li>
-        </ul>
+            
+<ul class="notes-list">
+    <!-- Post 1: Intro blog minimalis fokus nulis -->
+    <li class="note-item">
+        <a href="https://dummy.blog/intro-minimalist" class="note-title">Memulai Blog Minimalis: Fokus pada Tulisan</a>
+        <span class="note-date">24 May 2026</span>
+        <div class="note-body">
+            <p>Blog ini lahir dari keinginan sederhana: tempat menulis tanpa gangguan. Tidak ada iklan, tidak ada metrik yang bikin pusing, hanya ruang kosong yang siap diisi kata-kata. Saya percaya bahwa semakin sedikit elemen visual yang bersaing, semakin kuat pesan yang tersampaikan.</p>
+            <p>Desainnya sengaja dibuat polos agar mata langsung tertuju pada isi. Tidak ada sidebar, tidak ada pop-up, bahkan jumlah huruf pun dibatasi agar nyaman dibaca. Inilah kenikmatan menulis yang sesungguhnya—murni dan tanpa tekanan.</p>
+            <p>Jika kamu mencari tempat yang tenang untuk menuangkan ide, mungkin blog ini bisa menjadi inspirasi. Selamat membaca, semoga ada satu atau dua hal yang bisa kamu bawa pulang.</p>
+        </div>
+    </li>
+
+    <!-- Post 2: Contoh fitur ul, ol, blockcode, inline code, blockquote -->
+    <li class="note-item">
+        <a href="https://dummy.blog/text-formatting" class="note-title">Bermain dengan Format Tulisan: Contoh Nyata</a>
+        <span class="note-date">17 May 2026</span>
+        <div class="note-body">
+            <p>Salah satu kelebihan menulis dengan HTML adalah kita bisa mengatur sendiri struktur teks. Di bawah ini beberapa contoh elemen yang sering saya pakai:</p>
+            <ul>
+                <li><strong>Daftar tak berurutan:</strong> untuk ide yang setara.</li>
+                <li><strong>Daftar berurutan:</strong> untuk langkah yang harus diikuti.</li>
+                <li><strong>Kode dalam baris:</strong> misalnya, perintah <code>npm install</code> atau variabel <code>const x = 10;</code>.</li>
+            </ul>
+            <p>Kemudian untuk kutipan, saya sering menyisipkan <em>blockquote</em> seperti ini:</p>
+            <blockquote>
+                <p>"Menulis adalah cara paling sederhana untuk mengabadikan pikiran. Tidak perlu menunggu sempurna, tulis saja dulu."</p>
+            </blockquote>
+            <p>Adapun blok kode panjang sangat berguna untuk menampilkan potongan skrip:</p>
+            <pre><code>function sapa(nama) {
+  return `Halo, ${nama}! Selamat datang di blog ini.`;
+}
+console.log(sapa('FZH'));</code></pre>
+            <p>Dengan kombinasi di atas, artikel teknis atau cerita pribadi jadi lebih hidup. Kamu bisa langsung mempraktikkannya di editor HTML favoritmu.</p>
+        </div>
+    </li>
+
+    <!-- Post 3: Contoh gambar -->
+    <li class="note-item">
+        <a href="https://dummy.blog/images-example" class="note-title">Menampilkan Gambar di Blog Statis</a>
+        <span class="note-date">10 May 2026</span>
+        <div class="note-body">
+            <p>Kadang tulisan saja tidak cukup. Gambar bisa memperkuat cerita. Di bawah ini contoh penyisipan gambar dengan tetap memperhatikan performa (lebar, tinggi, dan lazy loading):</p>
+            <figure>
+                <img src="https://img-hub.netlify.app/main/betterlyfe.webp" alt="Ilustrasi kehidupan yang lebih baik" width="800" height="600" loading="lazy">
+                <figcaption>Better Lyfe – inspirasi untuk hidup yang lebih sederhana.</figcaption>
+            </figure>
+            <p>Berikut gambar kedua dengan tema berbeda:</p>
+            <figure>
+                <img src="https://img-hub.netlify.app/military/8.webp" alt="Suasana latihan militer" width="800" height="533" loading="lazy">
+                <figcaption>Military scene – ketegasan dan disiplin dalam satu frame.</figcaption>
+            </figure>
+            <p>Kedua gambar diambil dari CDN khusus yang saya siapkan. Dengan format WebP, ukuran file tetap ringan meski resolusi tinggi. Sangat cocok untuk blog statis yang mengutamakan kecepatan.</p>
+        </div>
+    </li>
+
+    <!-- Post 4: Tentang blog notes.fzh -->
+    <li class="note-item">
+        <a href="https://notes-fzh.netlify.app" class="note-title">Di Balik notes.fzh: Pemilik dan Filosofi</a>
+        <span class="note-date">3 May 2026</span>
+        <div class="note-body">
+            <p>Blog <a href="https://notes-fzh.netlify.app" target="_blank" rel="noopener noreferrer">notes.fzh</a> adalah ruang pribadi milik FZH, seseorang yang gemar mencatat hal-hal kecil yang sering terlewat. Tidak ada agenda besar, hanya keinginan untuk berbagi apa yang dipikirkan, tanpa berharap validasi.</p>
+            <p>Sebagai pemilik, saya ingin blog ini tetap bersahaja: tanpa komentar, tanpa like, tanpa share button. Hanya teks yang berbicara. Jika kamu penasaran dengan isinya, langsung saja kunjungi <a href="https://notes-fzh.netlify.app" target="_blank" rel="noopener noreferrer">notes.fzh</a> dan lihat sendiri.</p>
+        </div>
+    </li>
+
+    <!-- Post 5: Cara nulis via HTML raw, SSG, flat file CMS -->
+    <li class="note-item">
+        <a href="https://dummy.blog/how-to-write" class="note-title">Cara Menulis Blog: HTML Mentah, SSG, atau Flat-File CMS?</a>
+        <span class="note-date">26 Apr 2026</span>
+        <div class="note-body">
+            <p>Ada banyak cara mengelola konten blog. Berikut beberapa pendekatan yang bisa kamu pilih:</p>
+            <ol>
+                <li><strong>HTML mentah (raw):</strong> Tulis langsung di file HTML. Cocok untuk blog sederhana tanpa banyak halaman. Keuntungan: tidak butuh build tool, langsung tayang. Kekurangan: harus update manual.</li>
+                <li><strong>Static Site Generator (SSG):</strong> Contoh: Eleventy, Hugo, atau Astro. Kamu menulis dalam Markdown, lalu build menghasilkan HTML statis. Cocok untuk blog dengan banyak artikel dan ingin otomatisasi.</li>
+                <li><strong>Flat-File CMS:</strong> Misalnya Grav atau Bludit. Tidak perlu database, konten disimpan dalam file teks. Praktis untuk pengguna yang ingin antarmuka admin tanpa kerumitan database.</li>
+                <li><strong>Headless CMS + SSG:</strong> Kombinasi modern: konten dikelola di CMS (seperti Decap CMS atau Strapi) lalu di-fetch saat build. Cocok untuk tim.</li>
+            </ol>
+            <p>Blog ini sendiri menggunakan HTML murni, karena saya lebih suka kendali penuh. Setiap artikel adalah file HTML terpisah yang diunggah ke hosting. Untuk kamu yang baru memulai, coba dulu HTML mentah. Jika sudah bosan, naikkan level ke SSG. Tidak ada aturan baku, yang penting nyaman dan konsisten menulis.</p>
+        </div>
+    </li>
+
+    <!-- Post 6: Host GitHub + CDN Netlify -->
+    <li class="note-item">
+        <a href="https://dummy.blog/hosting-github-netlify" class="note-title">Dari GitHub ke Netlify: Alur Hosting Modern</a>
+        <span class="note-date">19 Apr 2026</span>
+        <div class="note-body">
+            <p>Kode blog ini disimpan di repositori GitHub. Setiap perubahan yang di-<em>push</em> ke branch utama langsung memicu proses build di Netlify. Hasilnya, situs diperbarui otomatis dalam hitungan detik.</p>
+            <p>Mengapa Netlify? Karena mereka menyediakan CDN global, SSL gratis, dan integrasi mulus dengan GitHub. Pengunjung dari mana pun akan merasakan waktu muat yang cepat berkat distribusi konten ke server terdekat.</p>
+            <p>Untuk blog sekecil ini, paket gratis Netlify sudah lebih dari cukup. Bahkan fitur <em>deploy preview</em> sangat membantu saat ingin melihat perubahan sebelum tayang publik. Praktis, cepat, dan tanpa biaya.</p>
+        </div>
+    </li>
+
+    <!-- Post 7: Kontak notes.fzh -->
+    <li class="note-item">
+        <a href="https://notes-fzh.netlify.app" class="note-title">Tertarik? Mari Terhubung</a>
+        <span class="note-date">12 Apr 2026</span>
+        <div class="note-body">
+            <p>Jika setelah membaca kamu merasa ada yang ingin didiskusikan, jangan ragu untuk menghubungi saya. Bisa melalui DM Instagram, Threads, atau surel yang tercantum di bagian atas halaman ini.</p>
+            <p>Kunjungi juga halaman utama blog di <a href="https://notes-fzh.netlify.app" target="_blank" rel="noopener noreferrer">notes.fzh</a> untuk melihat koleksi tulisan lainnya. Saya terbuka untuk kolaborasi kecil, bertukar ide, atau sekadar menyapa. Sampai jumpa di sana!</p>
+        </div>
+    </li>
+</ul>
+
+
 
         <footer class="footer-text">
             &copy; Under obsrv.club — All rights reserved 2026
