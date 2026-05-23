@@ -57,12 +57,12 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* TOMBOL STATUS */
+        /* TOMBOL STATUS (sama persis dengan kode fix: padding 3px 15px, font 11px) */
         .status-btn {
             background: none;
             border: 1.5px solid #222;
             border-radius: 20px;
-            padding: 2px 12px;
+            padding: 3px 15px;
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
@@ -91,7 +91,7 @@
             text-align: left;
         }
 
-        /* KONTAK SOSIAL (spacing disamakan dengan kode fix: 0.45rem) */
+        /* KONTAK SOSIAL (sama persis dengan kode fix: 0.45rem) */
         .social-links {
             margin: 0 0 3.5rem 0;
             padding: 0;
@@ -102,7 +102,7 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 0.45rem 0;    /* sama persis dengan kode fix */
+            padding: 0.45rem 0;
             border-bottom: 1px solid #f2f2f2;
             font-size: 16px;
         }
@@ -153,9 +153,8 @@
             margin: 0;
         }
 
-        /* Space antar notes lebih besar */
         .note-item {
-            padding: 2.5rem 0 2.8rem 0;   /* lebih longgar */
+            padding: 2.5rem 0 2.8rem 0;
             border-bottom: 1px solid #f2f2f2;
         }
 
@@ -239,10 +238,13 @@
             .note-body {
                 font-size: 15px;
             }
-            .social-links li,
+
+            /* HANYA note-item yang padding-nya disesuaikan */
             .note-item {
-                padding: 1.8rem 0 2rem 0;   /* mobile tetap proporsional */
+                padding: 1.8rem 0 2rem 0;
             }
+
+            /* Social links TIDAK disentuh — tetap 0.45rem */
             .meta {
                 font-size: 11px;
             }
