@@ -9,27 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
 
     <style>
-        /* ========== FONT SYSTEM UI ========== */
+        /* ========== VARIABEL GLOBAL ========== */
+        :root {
+            --color-primary: #0b5fa5;
+            --color-bg: #ffffff;
+            --color-text: #111;
+            --color-heading: #000;
+            --color-muted: #666;          /* kontras 4.5+ */
+            --color-border: #f2f2f2;
+            --color-link: #000;
+            --color-link-hover: #222;
+            --max-content-width: 37.5rem; /* 600px */
+            --border-style: 1px solid #eaeaea;
+        }
+
+        /* Dark theme otomatis (opsional, tapi profesional) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg: #121212;
+                --color-text: #e0e0e0;
+                --color-heading: #f0f0f0;
+                --color-muted: #aaa;
+                --color-border: #2a2a2a;
+                --color-link: #e0e0e0;
+                --color-link-hover: #fff;
+                --border-style: 1px solid #333;
+            }
+        }
+
+        /* ========== RESET & DASAR ========== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100%; /* 16px */
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont,
                 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 2rem 1.2rem;
-            background: #fff;
-            color: #111;
-            font-size: 16px;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-size: 1rem;                      /* 16px */
             line-height: 1.6;
             display: flex;
             justify-content: center;
+            padding: 2rem 1.2rem;                 /* rem */
+            min-height: 100vh;
         }
 
         .main {
-            max-width: 600px;
+            max-width: var(--max-content-width);
             width: 100%;
             text-align: left;
         }
 
-        /* HEADER */
+        /* ========== HEADER (elemen <header>) ========== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -39,9 +92,9 @@
 
         .logo {
             font-weight: 700;
-            font-size: 19px;
+            font-size: 1.1875rem;                 /* 19px */
             letter-spacing: -0.02em;
-            color: #000;
+            color: var(--color-heading);
         }
 
         .header-right {
@@ -51,25 +104,24 @@
         }
 
         .time {
-            font-size: 12px;
-            color: #999;
+            font-size: 0.75rem;                   /* 12px */
+            color: var(--color-muted);
             font-weight: 400;
             font-variant-numeric: tabular-nums;
         }
 
-        /* TOMBOL STATUS (sama persis dengan kode fix) */
         .status-btn {
             background: none;
-            border: 1.5px solid #222;
-            border-radius: 20px;
-            padding: 3px 15px;
-            font-size: 11px;
+            border: 1.5px solid #222;              /* px untuk dekorasi */
+            border-radius: 20px;                  /* px dekorasi */
+            padding: 0.1875rem 0.9375rem;          /* 3px 15px → rem */
+            font-size: 0.6875rem;                 /* 11px */
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             cursor: pointer;
-            background: #fff;
-            color: #222;
+            background: var(--color-bg);
+            color: var(--color-text);
             transition: all 0.2s;
             white-space: nowrap;
             text-decoration: none;
@@ -80,18 +132,18 @@
             background: #f5f5f5;
         }
 
-        /* SUBTITLE */
+        /* ========== SUBTITLE (fluid) ========== */
         .subtitle {
-            font-size: 22px;
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);  /* 18px - 22px */
             font-weight: 450;
             margin: 0 0 1.5rem 0;
-            color: #1a1a1a;
+            color: var(--color-text);
             letter-spacing: -0.01em;
             line-height: 1.4;
             text-align: left;
         }
 
-        /* KONTAK SOSIAL */
+        /* ========== KONTAK SOSIAL ========== */
         .social-links {
             margin: 0 0 3.5rem 0;
             padding: 0;
@@ -103,8 +155,8 @@
             justify-content: space-between;
             align-items: baseline;
             padding: 0.45rem 0;
-            border-bottom: 1px solid #f2f2f2;
-            font-size: 16px;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1rem;
         }
 
         .social-links li:last-child {
@@ -112,7 +164,7 @@
         }
 
         .social-links a {
-            color: #000;
+            color: var(--color-link);
             text-decoration: none;
             font-weight: 500;
             display: inline-flex;
@@ -121,32 +173,32 @@
             transition: color 0.15s;
         }
 
-        .social-links a .material-symbols-outlined.arrow-icon {
-            font-size: 18px;
-            color: #666;
+        .social-links a .arrow-icon {
+            font-size: 1.125rem;                  /* 18px */
+            color: var(--color-muted);
             transition: color 0.15s, transform 0.15s;
         }
 
         .social-links a:hover {
-            color: #222;
+            color: var(--color-link-hover);
             text-decoration: underline;
-            text-underline-offset: 3px;
+            text-underline-offset: 0.1875rem;      /* 3px */
         }
 
         .social-links a:hover .arrow-icon {
             color: #000;
-            transform: translate(2px, -2px);
+            transform: translate(0.125rem, -0.125rem);  /* 2px */
         }
 
         .social-links .meta {
-            font-size: 12px;
-            color: #999;
+            font-size: 0.75rem;                   /* 12px */
+            color: var(--color-muted);
             font-weight: 400;
             white-space: nowrap;
             margin-left: 0.75rem;
         }
 
-        /* NOTES LIST */
+        /* ========== NOTES LIST ========== */
         .notes-list {
             list-style: none;
             padding: 0;
@@ -155,7 +207,7 @@
 
         .note-item {
             padding: 2.5rem 0 2.8rem 0;
-            border-bottom: 1px solid #f2f2f2;
+            border-bottom: 1px solid var(--color-border);
         }
 
         .note-item:last-child {
@@ -163,9 +215,9 @@
         }
 
         .note-title {
-            font-size: 19px;
+            font-size: clamp(1rem, 2vw, 1.1875rem);  /* 16px - 19px */
             font-weight: 600;
-            color: #000;
+            color: var(--color-heading);
             text-decoration: none;
             display: inline-block;
             margin-bottom: 0.5rem;
@@ -175,22 +227,22 @@
         }
 
         .note-title:hover {
-            color: #222;
+            color: var(--color-link-hover);
             text-decoration: underline;
-            text-underline-offset: 3px;
+            text-underline-offset: 0.1875rem;
         }
 
         .note-date {
-            font-size: 12px;
-            color: #999;
+            font-size: 0.75rem;                   /* 12px */
+            color: var(--color-muted);
             font-weight: 400;
             margin-bottom: 0.9rem;
             display: block;
         }
 
-        /* ISI CATATAN */
+        /* ========== ISI CATATAN ========== */
         .note-body {
-            font-size: 16px;
+            font-size: 1rem;
             color: #333;
             line-height: 1.7;
             margin: 0;
@@ -204,28 +256,27 @@
             margin-bottom: 0;
         }
 
-        /* LINK dalam paragraf: otomatis pakai ikon arrow_outward ukuran 16px */
         .note-body a[href^="http"]::after,
         .note-body a[href^="https"]::after {
             content: "arrow_outward";
             font-family: 'Material Symbols Outlined';
-            font-size: 16px;
+            font-size: 1rem;                      /* 16px */
             vertical-align: -0.2em;
             margin-left: 0.15em;
-            color: #666;
+            color: var(--color-muted);
             display: inline-block;
             transition: color 0.15s, transform 0.15s;
         }
 
         .note-body a:hover::after {
             color: #000;
-            transform: translate(2px, -2px);
+            transform: translate(0.125rem, -0.125rem);
         }
 
         .note-body a {
             color: #000;
             text-decoration: underline;
-            text-underline-offset: 2px;
+            text-underline-offset: 0.125rem;
             font-weight: 500;
         }
 
@@ -233,41 +284,38 @@
             color: #222;
         }
 
-        /* BLOCKQUOTE */
         .note-body blockquote {
             margin: 1.5rem 0;
             padding: 1rem 1.2rem;
-            border-left: 3px solid #ccc;
+            border-left: 0.1875rem solid #ccc;    /* 3px dekorasi */
             background: #fafafa;
             color: #444;
             font-style: italic;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 0.25rem 0.25rem 0;   /* 4px */
         }
 
         .note-body blockquote p {
             margin: 0;
         }
 
-        /* INLINE CODE */
         .note-body code {
             background: #f4f4f4;
             padding: 0.2em 0.4em;
-            border-radius: 3px;
+            border-radius: 0.1875rem;             /* 3px */
             font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-            font-size: 0.9em;
+            font-size: 0.9em;                     /* relatif terhadap parent */
             color: #333;
             border: 1px solid #eee;
         }
 
-        /* CODE BLOCK */
         .note-body pre {
             background: #fafafa;
-            border: 1px solid #eaeaea;
-            border-radius: 6px;
+            border: var(--border-style);
+            border-radius: 0.375rem;              /* 6px */
             padding: 1rem 1.2rem;
             overflow-x: auto;
             margin: 1.2rem 0;
-            font-size: 14px;
+            font-size: 0.875rem;                  /* 14px */
             line-height: 1.6;
         }
 
@@ -279,26 +327,13 @@
             border-radius: 0;
         }
 
-        /* UNORDERED LIST */
         .note-body ul {
             margin: 0.8rem 0;
             padding-left: 1.5rem;
             list-style-type: disc;
         }
 
-        .note-body ul li {
-            margin-bottom: 0.4rem;
-            padding: 0;
-            border-bottom: none;
-            font-size: inherit;
-        }
-
-        /* ORDERED LIST */
-        .note-body ol {
-            margin: 0.8rem 0;
-            padding-left: 1.5rem;
-        }
-
+        .note-body ul li,
         .note-body ol li {
             margin-bottom: 0.4rem;
             padding: 0;
@@ -306,59 +341,59 @@
             font-size: inherit;
         }
 
-        /* FOOTER */
+        .note-body ol {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+        }
+
+        /* ========== FOOTER ========== */
         .footer-text {
             text-align: center;
-            font-size: 12px;
+            font-size: 0.75rem;                   /* 12px */
             color: #bbb;
             margin-top: 2.8rem;
             padding-top: 0;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 640px) {
+        /* ========== RESPONSIVE (em untuk breakpoint) ========== */
+        @media (max-width: 40em) {                /* 640px */
             body {
                 padding: 1.8rem 1rem;
             }
-            .subtitle {
-                font-size: 20px;
-            }
-            .note-title {
-                font-size: 18px;
-            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 30em) {                /* 480px */
             body {
                 padding: 1.4rem 0.8rem;
-            }
-            .subtitle {
-                font-size: 18px;
-            }
-            .note-title {
-                font-size: 17px;
-            }
-            .note-body {
-                font-size: 15px;
             }
             .note-item {
                 padding: 1.8rem 0 2rem 0;
             }
             .meta {
-                font-size: 11px;
+                font-size: 0.6875rem;             /* 11px */
+            }
+        }
+
+        /* ========== HORMATI PREFERENSI GERAKAN ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="main">
-        <div class="header">
+    <main class="main">
+        <header class="header">
             <div class="logo">OBSRV/club</div>
             <div class="header-right">
-                <a href="https://status.dummy.url" class="status-btn" target="_blank" rel="noopener">Status</a>
+                <a href="https://status.dummy.url" class="status-btn" target="_blank" rel="noopener noreferrer">Status</a>
                 <div class="time" id="liveTime">—</div>
             </div>
-        </div>
+        </header>
 
         <h1 class="subtitle">
             Hi, hello. This is FZH Blog. In this blog you will find my mind, my thoughts, and a bit of work.
@@ -373,14 +408,14 @@
                 <span class="meta">Mail me</span>
             </li>
             <li>
-                <a href="https://instagram.com/notes.fzh" target="_blank" rel="noopener">
+                <a href="https://instagram.com/notes.fzh" target="_blank" rel="noopener noreferrer">
                     Instagram
                     <span class="material-symbols-outlined arrow-icon">arrow_outward</span>
                 </a>
                 <span class="meta">DM</span>
             </li>
             <li>
-                <a href="https://threads.net/notes.fzh" target="_blank" rel="noopener">
+                <a href="https://threads.net/notes.fzh" target="_blank" rel="noopener noreferrer">
                     Threads
                     <span class="material-symbols-outlined arrow-icon">arrow_outward</span>
                 </a>
@@ -390,6 +425,7 @@
 
         <!-- NOTES -->
         <ul class="notes-list">
+            <!-- Catatan 1... (isi sama) -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-1" class="note-title">Why I stopped using analytics on my personal site</a>
                 <span class="note-date">24 May 2026</span>
@@ -398,7 +434,7 @@
                     <p>Now I write for myself first. If someone reads it, that's a bonus — not a metric to optimize.</p>
                 </div>
             </li>
-
+            <!-- ... dan catatan lainnya sama persis seperti sebelumnya, tidak diubah kontennya -->
             <li class="note-item">
                 <a href="https://dummy.blog/post-2" class="note-title">The tools I actually use daily (2026 edition)</a>
                 <span class="note-date">18 May 2026</span>
@@ -416,7 +452,6 @@
                     </blockquote>
                 </div>
             </li>
-
             <li class="note-item">
                 <a href="https://dummy.blog/post-3" class="note-title">Typography is not a detail</a>
                 <span class="note-date">10 May 2026</span>
@@ -432,7 +467,6 @@
                     <p>It's not fancy, but it gets the job done.</p>
                 </div>
             </li>
-
             <li class="note-item">
                 <a href="https://dummy.blog/post-4" class="note-title">Under construction: a love letter to unfinished things</a>
                 <span class="note-date">02 May 2026</span>
@@ -449,12 +483,14 @@
             </li>
         </ul>
 
-        <div class="footer-text">
+        <footer class="footer-text">
             &copy; Under obsrv.club — All rights reserved 2026
-        </div>
-    </div>
+        </footer>
+    </main>
 
     <script>
+        "use strict";
+
         function updateTime() {
             const now = new Date();
             document.getElementById('liveTime').textContent = now.toLocaleTimeString([], {
