@@ -1,0 +1,13 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/</loc></url>
+  <url><loc>{{ site.url }}/journal/</loc></url>
+  <url><loc>{{ site.url }}/search/</loc></url>
+  {% for post in collections.posts %}
+  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | dateToRfc3339 | slice(0, 10) }}</lastmod></url>
+  {% endfor %}
+</urlset>

@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+permalink: /
+eleventyExcludeFromCollections: true
+---
+<main id="main" class="home">
+  <section class="wrap hero">
+    <div class="hero-top">
+      <div class="eyebrow hero-kicker">INDEPENDENT NOTES<br>ON THE DIGITAL WORLD</div>
+      <div class="hero-year mono">EST. 2026<br>INDONESIA — ID</div>
+    </div>
+    <h1>Make room<br><span class="second">for good ideas.</span></h1>
+    <div class="hero-bottom">
+      <div class="hero-caption">A PERSONAL JOURNAL<br>ABOUT DESIGN, WEB &<br>THINGS WORTH MAKING.</div>
+      <p class="intro">Saya menulis tentang <strong>web, desain, teknologi,</strong> dan proses membangun sesuatu yang sederhana namun bermakna. Ini adalah ruang kerja sekaligus catatan terbuka.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" id="journal">
+    <div class="section-label">
+      <div><div class="eyebrow">01 / SELECTED WRITING</div><div class="name">Journal & notes</div></div>
+      <div class="desc">Pemikiran, proses, dan catatan yang ingin saya simpan — bukan sekadar mengikuti tren.</div>
+      <div class="count mono">{{ collections.posts.length }} ENTRIES</div>
+    </div>
+    <div class="work-grid">
+      {% for post in collections.posts.slice(0, 4) %}
+      <article class="work">
+        <div class="num index">{{ loop.index }}</div>
+        <div>
+          <h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+          <p>{{ post.data.description }}</p>
+          <div class="work-foot">
+            <div class="tags">{% for tag in post.data.tags %}{% if tag != "post" %}<span class="tag">{{ tag }}</span>{% endif %}{% endfor %}</div>
+            <span class="date">{{ post.date | shortDate }}</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="archive-link"><a class="text-link" href="{{ '/journal/' | url }}">VIEW ALL JOURNAL ENTRIES ↗</a></p>
+  </section>
+
+  <section class="wrap section after-work" id="about">
+    <div class="about-layout">
+      <div class="about-title"><div class="eyebrow">02 / A LITTLE ABOUT ME</div><div class="about-subtitle">The person behind it.</div></div>
+      <p class="about-copy">Saya suka membuat website yang terasa <em>quietly confident</em> — jelas, cepat, dan punya alasan untuk setiap detailnya.</p>
+      <div class="about-aside">DESIGN-LED<br>PERFORMANCE-MINDED<br>ALWAYS LEARNING.</div>
+    </div>
+    <div class="products" id="objects">
+      <div class="product-head">
+        <div><div class="eyebrow">03 / SMALL DIGITAL GOODS</div><strong>Objects & experiments</strong></div>
+        <p>Sesekali saya merilis template dan perangkat kecil yang lahir dari proses kerja sendiri.</p>
+        <div class="meta">OCCASIONAL RELEASES ↗</div>
+      </div>
+      {% for product in site.products %}
+      <div class="product-line">
+        <div class="kind">{{ product.kind }}</div>
+        <div class="product-name"><a href="{{ product.url | url }}">{{ product.name }}</a></div>
+        <div class="product-cta">{{ product.status }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="wrap closing">
+    <div class="eyebrow">A NOTE BEFORE YOU LEAVE</div>
+    <h2>Good things take<br>thought, not noise.</h2>
+    <div class="closing-row"><p>Terima kasih sudah mampir. Semoga ada satu ide kecil di sini yang bisa kamu bawa.</p><a class="text-link" href="{{ '/journal/' | url }}">Explore the journal ↗</a></div>
+  </section>
+</main>
