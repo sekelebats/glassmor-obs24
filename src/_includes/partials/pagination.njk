@@ -1,0 +1,7 @@
+{% if pagination.href.previous or pagination.href.next %}
+<nav class="pagination" aria-label="Pagination">
+  {% if pagination.href.previous %}<a href="{{ pagination.href.previous | url }}" rel="prev">← NEWER</a>{% else %}<span class="disabled">← NEWER</span>{% endif %}
+  <span class="pagination-count">PAGE {{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }}</span>
+  {% if pagination.href.next %}<a href="{{ pagination.href.next | url }}" rel="next">OLDER →</a>{% else %}<span class="disabled">OLDER →</span>{% endif %}
+</nav>
+{% endif %}
