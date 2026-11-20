@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+<main id="main">
+  <article class="article-page">
+    <div class="wrap article-top">
+      <div class="eyebrow">JOURNAL / {{ page.date | year }}<br>{% for tag in tags %}{% if tag != "post" %}{{ tag }}{% if not loop.last %} / {% endif %}{% endif %}{% endfor %}</div>
+      <h1>{{ title }}</h1>
+      <p class="article-summary">{{ description }}</p>
+      <div class="article-meta meta">{{ page.date | readableDate }}<br>{{ content | readTime }} MIN READ<br>BY {{ site.author }}</div>
+    </div>
+    <div class="prose">{{ content | safe }}</div>
+    <div class="wrap post-end"><a class="text-link" href="{{ '/journal/' | url }}">← BACK TO JOURNAL</a></div>
+  </article>
+</main>
