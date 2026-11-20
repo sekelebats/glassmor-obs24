@@ -1,109 +1,142 @@
-# Sekelebat — Eleventy starter
+# Sekelebat — Eleventy + Pagefind
 
-Starter ini mengubah desain single-file HTML V2 menjadi blog Eleventy (11ty) dengan konten Markdown. Desain Swiss editorial, tipografi Inter + JetBrains Mono, token warna HSL, dan mode gelap dipertahankan.
+Starter blog editorial monochrome dengan Eleventy v3, Markdown, Pagefind, dan koleksi Objects.
 
-## Kebutuhan
+## Versi package yang dipatok
 
-- Node.js 20 atau lebih baru
-- npm
+- `@11ty/eleventy`: 3.1.8 (stable)
+- `@11ty/eleventy-plugin-rss`: 3.1.0
+- `pagefind`: 1.6.0
 
-## Jalankan di komputer
+Versi tersebut adalah versi stable/latest yang diperiksa pada 21 November 2026. Tidak memakai Eleventy v4 alpha.
+
+## Jalankan
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka alamat lokal yang ditampilkan Eleventy (biasanya `http://localhost:8080`).
-
-Build produksi:
+Build produksi (Eleventy lalu Pagefind):
 
 ```bash
 npm run build
 ```
 
-Hasil build berada di folder `_site/`.
+Build HTML saja: `npm run build:site`. Buat ulang indeks search: `npm run search:index`.
 
-## Struktur proyek
+Catatan: `npm run dev` membuat build + indeks Pagefind terlebih dahulu, lalu menjalankan server Eleventy. Jika kamu mengubah atau menambah konten saat server berjalan, jalankan `npm run search:index` lagi agar indeks pencarian ikut diperbarui.
+
+Output: `_site/`. Deploy Cloudflare Pages dengan build command `npm run build` dan output directory `_site`.
+
+## Struktur
 
 ```text
 sekelebat-eleventy/
 ├── .eleventy.js
 ├── package.json
-├── README.md
-└── src/
-    ├── _data/
-    │   └── site.js
-    ├── _includes/
-    │   ├── layouts/
-    │   │   ├── base.njk
-    │   │   └── post.njk
-    │   └── partials/
-    │       ├── header.njk
-    │       └── footer.njk
-    ├── assets/
-    │   ├── css/site.css
-    │   └── js/site.js
-    ├── posts/
-    │   └── *.md
-    ├── journal/index.njk
-    ├── search/index.njk
-    ├── 404.njk
-    ├── feed.njk
-    ├── robots.njk
-    ├── sitemap.njk
-    └── index.njk
+├── src/
+│   ├── _data/site.js
+│   ├── _includes/
+│   │   ├── layouts/{base,post,object}.njk
+│   │   └── partials/{header,footer,pagination}.njk
+│   ├── assets/{css/site.css,js/site.js}
+│   ├── posts/*.md
+│   ├── objects/*.md
+│   ├── journal/index.njk
+│   ├── objects/index.njk
+│   ├── search/index.njk
+│   ├── about/index.njk
+│   ├── contact/index.njk
+│   ├── privacy/index.njk
+│   ├── disclaimer/index.njk
+│   ├── terms/index.njk
+│   ├── license/index.njk
+│   ├── refunds/index.njk
+│   ├── index.njk
+│   ├── 404.njk
+│   ├── feed.njk
+│   ├── robots.njk
+│   └── sitemap.njk
+└── _site/ (generated; not committed)
 ```
 
-## Menulis artikel baru
+## Homepage, archive, pagination
 
-Buat file Markdown baru di `src/posts/`, misalnya `catatan-baru.md`:
+- Homepage menampilkan 4 artikel terbaru dan 2 Objects terbaru.
+- Homepage tidak memakai pagination; ia hanya menampilkan cuplikan.
+- `/journal/`: 10 artikel per halaman; halaman berikutnya `/journal/2/`, `/journal/3/`, dan seterusnya.
+- `/objects/`: 8 Objects per halaman; halaman berikutnya `/objects/2/`, dan seterusnya.
+- Setiap object punya halaman detail `/objects/<slug>/`.
+
+## Pagefind: single body region
+
+Hanya template detail artikel dan detail object yang diberi **satu** `data-pagefind-body` pada elemen `<main>` terluar. Judul dan isi berada di dalam elemen yang sama. Header, navigasi, footer, homepage, arsip, dan halaman legal tidak diindeks. Jangan menambahkan `data-pagefind-body` kedua pada `.prose` karena Pagefind akan menggabungkan beberapa region.
+
+Pagefind berjalan setelah Eleventy selesai membangun HTML. Indeks dibuat di `_site/pagefind/`. Tidak ada indeks pencarian JavaScript buatan sendiri.
+
+## Menambah artikel
+
+Buat file `src/posts/nama-artikel.md`:
 
 ```md
 ---
 layout: layouts/post.njk
-title: "Judul tulisan"
-description: "Ringkasan singkat untuk SEO dan daftar artikel."
+title: "Judul artikel"
+description: "Ringkasan singkat artikel."
 date: 2026-11-22
 tags:
   - post
-  - Catatan
+  - Frontend
 permalink: "/journal/{{ page.fileSlug }}/"
 ---
 
-Isi artikel ditulis menggunakan Markdown biasa.
+Isi artikel Markdown.
 ```
 
-Wajib sertakan tag `post` agar artikel masuk ke koleksi Journal. Tag lain menjadi label kategori. Tanggal memakai format `YYYY-MM-DD`.
+Tag `post` wajib agar artikel masuk ke koleksi Journal.
 
-## Pengaturan situs
+## Menambah Object / produk digital
 
-Edit `src/_data/site.js`:
-- `url`: ganti `https://example.com` dengan domain final tanpa slash di akhir.
-- `name`, `title`, `description`, `author`.
-- `navigation`, `products`, dan email kontak.
+Buat file `src/objects/nama-produk.md`:
 
-Canonical, Open Graph dasar, RSS Atom, `robots.txt`, dan `sitemap.xml` dibuat saat build. Setelah deploy, daftarkan sitemap di Google Search Console. Jangan lupa sesuaikan domain di `site.url`.
+```md
+---
+layout: layouts/object.njk
+title: "Nama produk"
+description: "Deskripsi singkat produk."
+date: 2026-11-22
+tags:
+  - object
+  - Website template
+permalink: "/objects/{{ page.fileSlug }}/"
+category: "WEBSITE TEMPLATE"
+status: "IN DEVELOPMENT"
+format: "HTML / CSS / JS"
+version: "0.1"
+priceLabel: "NOT ANNOUNCED"
+shortName: "NAMA PRODUK"
+coverText: "NAMA\nPRODUK"
+highlights:
+  - Fitur satu
+  - Fitur dua
+---
 
-## Search dan archive
+## Tentang produk
 
-- `/journal/` menampilkan seluruh artikel.
-- `/search/` menyediakan pencarian ringan di browser dari judul + deskripsi artikel.
-- `/404.html` adalah halaman not-found untuk konfigurasi static hosting.
+Deskripsi lengkap produk dengan Markdown.
+```
 
-Search sengaja tidak mengunduh isi seluruh artikel; hanya metadata judul dan deskripsi.
+Tag `object` wajib. Dua object yang disertakan adalah contoh konsep, belum produk siap jual. Harga dan checkout sengaja belum dibuat.
 
-## Deploy ke Cloudflare Pages
+## Site settings
 
-- Build command: `npm run build`
-- Build output directory: `_site`
-- Framework preset: None
-- Node version: gunakan Node 20+ pada pengaturan build.
+Edit `src/_data/site.js`, terutama `url` dan `contactEmail`. Ganti `https://example.com` dengan domain final sebelum deploy. Perbarui isi halaman Privacy, Disclaimer, dan Terms agar sesuai praktik aktual situs dan ketentuan penjualanmu.
 
-Folder `_site` adalah hasil build. Jangan edit file di `_site` secara manual; ubah sumber di `src/`.
+## Catatan produksi
 
-## Catatan teknis
-
-- Google Fonts dimuat dari CDN untuk menjaga desain preview. Jika ingin mengurangi request eksternal, font dapat di-self-host pada tahap optimasi berikutnya.
-- Belum ada CMS/admin. Artikel ditulis sebagai Markdown. Integrasi editor visual/Hono dapat dibuat sebagai tahap terpisah setelah fondasi blog stabil.
-- `example.com` adalah placeholder; ganti sebelum produksi.
+- `package.json` dipatok ke versi stable spesifik. Jalankan `npm install` untuk menghasilkan `package-lock.json`, lalu commit keduanya agar build Cloudflare reproducible.
+- Jangan edit `_site` langsung; edit sumber di `src/`.
+- Google Fonts masih eksternal. Jika ingin meniadakan request font pihak ketiga, self-host font pada tahap optimasi berikutnya.
+- `404.html` disiapkan; pastikan platform hosting menyajikannya sebagai custom 404.
+- Terms/Privacy/Disclaimer/License/Refunds adalah draft awal, bukan nasihat hukum. Sesuaikan dengan praktik aktual dan hukum yang berlaku sebelum menerima pembayaran atau memasang analytics/affiliate.
