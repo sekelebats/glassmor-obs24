@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: "Search"
+description: "Cari tulisan di Sekelebat."
+permalink: /search/
+---
+<main id="main" class="wrap utility-page">
+  <div class="eyebrow">FIND SOMETHING</div>
+  <h1>Search<br><span class="second">the journal.</span></h1>
+  <label class="search-label" for="site-search">SEARCH ARTICLES</label>
+  <input id="site-search" class="search-input" type="search" placeholder="Ketik judul atau topik..." autocomplete="off">
+  <p id="search-status" class="search-status" aria-live="polite">Mulai mengetik untuk mencari tulisan.</p>
+  <div id="search-results" class="archive-list"></div>
+</main>
+<script id="search-data" type="application/json">[
+  {% for post in collections.posts %}
+  {"title": {{ post.data.title | dump | safe }}, "description": {{ post.data.description | dump | safe }}, "url": {{ post.url | dump | safe }}, "date": {{ post.date | dump | safe }}}{% if not loop.last %},{% endif %}
+  {% endfor %}
+]</script>
