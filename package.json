@@ -1,15 +1,18 @@
 {
   "name": "sekelebat-eleventy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "eleventy --serve",
-    "build": "eleventy",
+    "dev": "npm run build && eleventy --serve",
+    "build": "eleventy && pagefind --site _site",
+    "build:site": "eleventy",
+    "search:index": "pagefind --site _site",
     "clean": "node -e \"import('node:fs').then(fs => fs.rmSync('_site', { recursive: true, force: true }))\""
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-plugin-rss": "^2.0.4"
+    "@11ty/eleventy": "3.1.8",
+    "@11ty/eleventy-plugin-rss": "3.1.0",
+    "pagefind": "1.6.0"
   }
 }
