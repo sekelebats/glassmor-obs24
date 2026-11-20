@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: "Objects"
+description: "Digital products, templates, tools, and experiments from Sekelebat."
+pagination:
+  data: collections.objects
+  size: 8
+  alias: objects
+  generatePageOnEmptyData: true
+permalink: "/objects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+<main id="main" class="objects-archive">
+  <section class="wrap hero archive-hero"><div class="hero-top"><div class="eyebrow">A SMALL COLLECTION<br>OF DIGITAL THINGS</div><div class="hero-year mono">{{ collections.objects.length }} OBJECTS</div></div><h1>Objects<br><span class="second">& experiments.</span></h1><div class="hero-bottom"><div class="hero-caption">MADE TO BE USEFUL.<br>DESIGNED TO LAST.</div><p class="intro">Produk digital, template, dan perangkat kecil yang lahir dari proses kerja — bukan sekadar dibuat untuk memenuhi katalog.</p></div></section>
+  <section class="wrap section"><div class="section-label"><div><div class="eyebrow">01 / THE COLLECTION</div><div class="name">Digital objects</div></div><div class="desc">Setiap object memiliki halaman sendiri berisi konteks, fitur, dan detail produk.</div><div class="count mono">PAGE {{ pagination.pageNumber + 1 }}</div></div>
+    <div class="object-list object-list-archive">{% for object in objects %}<article class="object-row"><a class="object-art" href="{{ object.url | url }}"><span class="art-index">OBJECT / {{ (loop.index + (pagination.pageNumber * 8)) | pad2 }}</span><strong>{{ object.data.coverText or object.data.shortName or "FORM / FUNCTION" }}</strong><span class="art-foot">SEKELEBAT® — DIGITAL OBJECT</span></a><div class="object-info"><div class="object-kind">{{ object.data.category }} <span> / {{ object.data.status }}</span></div><h2><a href="{{ object.url | url }}">{{ object.data.title }}</a></h2><p>{{ object.data.description }}</p><div class="object-bottom"><span class="meta">{{ object.data.format }}</span><a class="text-link" href="{{ object.url | url }}">EXPLORE OBJECT ↗</a></div></div></article>{% else %}<p class="empty-note">Objects sedang disiapkan. Kembali lagi nanti.</p>{% endfor %}</div>
+    {% include "partials/pagination.njk" %}
+  </section>
+</main>
