@@ -2,7 +2,6 @@ import rssPlugin from "@11ty/eleventy-plugin-rss";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(rssPlugin);
-
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
@@ -19,6 +18,8 @@ export default function (eleventyConfig) {
     }).format(dateObj);
   });
 
+  eleventyConfig.addFilter("pad2", (value) => String(value).padStart(2, "0"));
+
   eleventyConfig.addFilter("year", (dateObj) => {
     const d = dateObj ? new Date(dateObj) : new Date();
     return d.getUTCFullYear();
@@ -29,19 +30,16 @@ export default function (eleventyConfig) {
     return Math.max(1, Math.ceil(words / 220));
   });
 
-  eleventyConfig.addFilter("jsonify", (value) => JSON.stringify(value));
+  eleventyConfig.addCollection("posts", (api) =>
+    api.getFilteredByTag("post").sort((a, b) => b.date - a.date)
+  );
 
-  eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi.getFilteredByTag("post").sort((a, b) => b.date - a.date);
-  });
+  eleventyConfig.addCollection("objects", (api) =>
+    api.getFilteredByTag("object").sort((a, b) => b.date - a.date)
+  );
 
   return {
-    dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
-    },
+    dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     templateFormats: ["njk", "md", "11ty.js", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
