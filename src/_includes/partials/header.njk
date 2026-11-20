@@ -2,11 +2,10 @@
   <div class="wrap mast-inner">
     <a class="wordmark" href="{{ '/' | url }}">{{ site.name }}<span>® / {{ site.year }}</span></a>
     <nav class="nav" aria-label="Main navigation">
-      {% for item in site.navigation %}
-        <a href="{{ item.url | url }}">{{ item.label }}</a>
-      {% endfor %}
+      {% for item in site.navigation %}<a href="{{ item.url | url }}">{{ item.label }}</a>{% endfor %}
     </nav>
     <div class="right-head">
+      <a class="search-shortcut" href="{{ '/search/' | url }}" aria-label="Search">SEARCH ↗</a>
       <span class="availability"><i class="dot"></i> Independent / online</span>
       <button class="theme" id="theme" type="button" aria-label="Switch to dark mode">◐</button>
     </div>
