@@ -1,19 +1,17 @@
 ---
 layout: layouts/base.njk
 title: "Search"
-description: "Cari tulisan di Sekelebat."
+description: "Cari tulisan dan digital objects di Sekelebat."
 permalink: /search/
+pagefind: true
+robots: noindex,follow
 ---
-<main id="main" class="wrap utility-page">
+<main id="main" class="wrap utility-page search-page">
   <div class="eyebrow">FIND SOMETHING</div>
   <h1>Search<br><span class="second">the journal.</span></h1>
-  <label class="search-label" for="site-search">SEARCH ARTICLES</label>
-  <input id="site-search" class="search-input" type="search" placeholder="Ketik judul atau topik..." autocomplete="off">
-  <p id="search-status" class="search-status" aria-live="polite">Mulai mengetik untuk mencari tulisan.</p>
-  <div id="search-results" class="archive-list"></div>
+  <p class="search-intro">Cari tulisan dan objects berdasarkan judul atau isi.</p>
+  <pagefind-config lang="id" excerpt-length="24"></pagefind-config>
+  <pagefind-input placeholder="Ketik topik, judul, atau kata kunci..." debounce="180"></pagefind-input>
+  <pagefind-summary></pagefind-summary>
+  <pagefind-results hide-sub-results></pagefind-results>
 </main>
-<script id="search-data" type="application/json">[
-  {% for post in collections.posts %}
-  {"title": {{ post.data.title | dump | safe }}, "description": {{ post.data.description | dump | safe }}, "url": {{ post.url | dump | safe }}, "date": {{ post.date | dump | safe }}}{% if not loop.last %},{% endif %}
-  {% endfor %}
-]</script>
