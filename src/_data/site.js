@@ -7,26 +7,19 @@ export default {
   author: "Sekelebat",
   language: "id",
   year: new Date().getFullYear(),
+  buildDate: new Date(),
   navigation: [
     { label: "Journal", url: "/journal/" },
-    { label: "About", url: "/#about" },
-    { label: "Objects", url: "/#objects" }
+    { label: "About", url: "/about/" },
+    { label: "Objects", url: "/objects/" }
   ],
-  products: [
-    {
-      kind: "01 / WEBSITE TEMPLATE",
-      name: "The Editorial — Personal blog system",
-      url: "/#objects",
-      status: "View details ↗"
-    },
-    {
-      kind: "02 / STARTER KIT",
-      name: "Raw HTML — A quiet starting point",
-      url: "/#objects",
-      status: "Coming soon ↗"
-    }
+  footerLinks: [
+    { label: "Contact", url: "/contact/" },
+    { label: "Privacy", url: "/privacy/" },
+    { label: "Disclaimer", url: "/disclaimer/" },
+    { label: "Terms", url: "/terms/" },
+    { label: "License", url: "/license/" },
+    { label: "Refunds", url: "/refunds/" }
   ],
-  social: {
-    email: "hello@example.com"
-  }
+  contactEmail: "hello@example.com"
 };
