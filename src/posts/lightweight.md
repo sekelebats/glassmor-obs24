@@ -9,6 +9,8 @@ tags:
   - Frontend
 permalink: "/journal/{{ page.fileSlug }}/"
 ---
+Whats wrong woth yiu scumbag
+
 Website yang baik tidak harus dipenuhi animasi, library, atau komponen yang kompleks. Sering kali, pengalaman terbaik datang dari keputusan yang lebih sederhana: **konten yang jelas, struktur yang masuk akal, dan aset yang seperlunya.**
 
 Dalam proyek kecil maupun besar, saya mencoba memulai dari HTML semantik, CSS yang terukur, dan JavaScript hanya ketika interaksi benar-benar membutuhkannya.
