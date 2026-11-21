@@ -4,6 +4,8 @@ export default {
   description: "Catatan personal tentang web, desain, teknologi, dan hal-hal yang dibuat dengan sengaja.",
   url: "https://example.com",
   locale: "id_ID",
+  ogImage: "/assets/images/og-default.png",
+  ogImageAlt: "Sekelebat — independent notes on the digital world",
   author: "Sekelebat",
   language: "id",
   year: new Date().getFullYear(),
@@ -21,5 +23,5 @@ export default {
     { label: "License", url: "/license/" },
     { label: "Refunds", url: "/refunds/" }
   ],
-  contactEmail: "hello@example.com"
+  contactEmail: "hello@example.com",
 };
