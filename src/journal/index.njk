@@ -11,8 +11,8 @@ permalink: "/journal/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber 
 ---
 <main id="main" class="archive-page">
   <section class="wrap hero archive-hero"><div class="hero-top"><div class="eyebrow">THE WRITING ARCHIVE<br>ALL NOTES, IN ONE PLACE</div><div class="hero-year mono">{{ collections.posts.length }} ENTRIES</div></div><h1>Journal<br><span class="second">& notes.</span></h1><div class="hero-bottom"><div class="hero-caption">A RUNNING LOG<br>OF IDEAS & PROCESS.</div><p class="intro">Catatan yang dikumpulkan dari proses belajar, membangun, dan memperhatikan hal-hal kecil di dunia digital.</p></div></section>
-  <section class="wrap section"><div class="section-label"><div><div class="eyebrow">01 / THE ARCHIVE</div><div class="name">All entries</div></div><div class="desc">Tulisan terbaru berada di bagian paling atas.</div><div class="count mono">PAGE {{ pagination.pageNumber + 1 }}</div></div>
-    <div class="archive-list">{% for post in posts %}<article class="archive-item"><span class="date">{{ post.date | shortDate }}</span><div><h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2><p>{{ post.data.description }}</p></div><span class="archive-arrow">↗</span></article>{% else %}<p class="empty-note">Belum ada tulisan.</p>{% endfor %}</div>
+  <section class="wrap section"><div class="section-label"><div><div class="eyebrow">01 / THE ARCHIVE</div><h2 class="name">All entries</h2></div><div class="desc">Tulisan terbaru berada di bagian paling atas.</div><div class="count mono">PAGE {{ pagination.pageNumber + 1 }}</div></div>
+    <div class="archive-list">{% for post in posts %}<article class="archive-item"><time class="date" datetime="{{ post.date | dateISO }}">{{ post.date | shortDate }}</time><div><h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2><p>{{ post.data.description }}</p></div><span class="archive-arrow" aria-hidden="true">{% icon "arrow-up-right" %}</span></article>{% else %}<p class="empty-note">Belum ada tulisan.</p>{% endfor %}</div>
     {% include "partials/pagination.njk" %}
   </section>
 </main>
