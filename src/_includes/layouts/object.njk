@@ -1,17 +1,21 @@
 ---
 layout: layouts/base.njk
-ogType: product
+ogType: website
+schemaType: CreativeWork
+breadcrumbSection: Objects
+breadcrumbUrl: /objects/
 ---
 <main id="main" class="object-detail">
   <article data-pagefind-body data-pagefind-filter="content_type:Object">
+  <nav class="wrap breadcrumbs" aria-label="Breadcrumb" data-pagefind-ignore><a href="{{ '/' | url }}">Home</a><span aria-hidden="true">/</span><a href="{{ '/objects/' | url }}">Objects</a><span aria-hidden="true">/</span><span aria-current="page">{{ title }}</span></nav>
   <section class="wrap object-detail-hero">
     <div class="eyebrow" data-pagefind-ignore>OBJECT / {{ page.date | year }}<br>{{ category }}</div>
     <div class="object-detail-title"><div class="object-status" data-pagefind-ignore>{{ status }}</div><h1 data-pagefind-meta="title" data-pagefind-ignore>{{ title }}</h1><p class="object-lead">{{ description }}</p></div>
     <div class="object-detail-art" data-pagefind-ignore><span class="art-index">SEKELEBAT® / {{ category }}</span><strong>{{ coverText or shortName or title }}</strong><span class="art-foot">{{ format }} — {{ version or "VERSION 01" }}</span></div>
     <div class="object-specs" data-pagefind-ignore><div><span>FORMAT</span><strong>{{ format }}</strong></div><div><span>STATUS</span><strong>{{ status }}</strong></div><div><span>VERSION</span><strong>{{ version or "—" }}</strong></div><div><span>PRICE</span><strong>{{ priceLabel or "Not announced" }}</strong></div></div>
   </section>
-  <section class="wrap object-detail-content"><div class="object-detail-aside" data-pagefind-ignore><div class="eyebrow">ABOUT THIS OBJECT</div><a class="text-link" href="{{ '/objects/' | url }}">← ALL OBJECTS</a></div><div class="prose">{{ content | safe }}</div></section>
+  <section class="wrap object-detail-content"><aside class="object-detail-aside" data-pagefind-ignore><div class="eyebrow">ABOUT THIS OBJECT</div><a class="text-link" href="{{ '/objects/' | url }}">{% icon "arrow-left" %} ALL OBJECTS</a></aside><div class="prose">{{ content | safe }}</div></section>
   {% if highlights %}<section class="wrap object-highlights"><div class="eyebrow">WHAT'S INSIDE</div><div class="highlight-list">{% for item in highlights %}<div class="highlight-item"><span>{{ loop.index | pad2 }}</span><strong>{{ item }}</strong></div>{% endfor %}</div></section>{% endif %}
   </article>
-  <section class="wrap object-end" data-pagefind-ignore><p>Made with intention. Built to stay useful.</p>{% if actionUrl %}<a class="text-link" href="{{ actionUrl }}" rel="noopener">{{ actionLabel or "VIEW PRODUCT ↗" }}</a>{% else %}<span class="meta">{{ status }} — DETAILS WILL FOLLOW</span>{% endif %}</section>
+  <section class="wrap object-end" data-pagefind-ignore><p>Made with intention. Built to stay useful.</p><div class="object-actions">{% if actionUrl %}<a class="text-link" href="{{ actionUrl }}" rel="noopener">{{ actionLabel or "VIEW PRODUCT" }} {% icon "arrow-up-right" %}</a>{% else %}<span class="meta">{{ status }} — DETAILS WILL FOLLOW</span>{% endif %}<div class="share-tools"><button class="share-button" type="button" data-share data-share-title="{{ title }}" data-share-url="{{ site.url }}{{ page.url }}">{% icon "share-2" %} SHARE OBJECT</button><span class="share-status" data-share-status role="status" aria-live="polite"></span></div></div></section>
 </main>
